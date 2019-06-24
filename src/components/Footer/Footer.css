@@ -1,0 +1,18 @@
+.Footer{
+	background-color: green;
+	height: 55px;
+	width: 1930px;
+	position: absolute;
+	bottom: -800px;
+}
+#insta{
+	height: 55px;
+	width: 55px;
+	position: relative;
+}
+#face{
+	height: 55px;
+	width: 55px;
+	position: relative;
+
+}
