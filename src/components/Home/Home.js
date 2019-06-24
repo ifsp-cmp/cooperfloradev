@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import './Home.css';
-import home = '../../assets/images/home.png';
+import fotoCapa from '../../assets/images/home.png';
 
 const home = () => {
 	return (
 		<div className='Home'>
-			<img 
+			<div>
+				<img src={fotoCapa} alt="Foto da Capa" />
+			</div>
 		</div>
 	);
 }
