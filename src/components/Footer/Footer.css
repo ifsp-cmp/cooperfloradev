@@ -1,18 +1,28 @@
 .Footer{
-	background-color: green;
-	height: 55px;
-	width: 1930px;
+	background-color: #90EE90;
+	height: 5%;
+	width: 100%;
 	position: absolute;
-	bottom: -800px;
+}
+#gmail{
+	height: 30px;
+	position: relative;
+	text-align: left;
+	
+}
+p{
+	position: relative;
+}
+#licen{
+	position: absolute;
+	text-align: center;
 }
 #insta{
-	height: 55px;
-	width: 55px;
+	height: 30px;
 	position: relative;
 }
 #face{
-	height: 55px;
-	width: 55px;
+	height: 30px;
 	position: relative;
 
 }
