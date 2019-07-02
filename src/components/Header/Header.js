@@ -6,8 +6,10 @@ import logo from './logo.jpg';
 const header =() => { 
 	
 	return < div id="menu-container" class= "container-ms"> 
+	
+	<div id="container-logo">
 	<img src={logo} id ="logo" alt="Logo da Cooperativa"/ >
-					<nav class = " nav justify-content-end "> 
+	</div>				<nav class = " nav justify-content-end "> 
 
 					
 							<ul class="nav justify-content-end">
