@@ -1,15 +1,14 @@
 .Footer{
 	background-color: #90EE90;
-	height: 55px;
-	width: 1930px;
+	height: 5%;
+	width: 100%;
 	position: absolute;
-	bottom: -800px;
 }
 #gmail{
 	height: 30px;
-	width: 30px;
 	position: relative;
-
+	text-align: left;
+	
 }
 p{
 	position: relative;
@@ -19,13 +18,11 @@ p{
 	text-align: center;
 }
 #insta{
-	height: 40px;
-	width: 40px;
+	height: 30px;
 	position: relative;
 }
 #face{
-	height: 40px;
-	width: 40px;
+	height: 30px;
 	position: relative;
 
 }

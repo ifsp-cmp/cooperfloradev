@@ -10,14 +10,14 @@ const footer =() => {
 		<div class="Footer" >
 			<div className="row">
 				<div className="col-sm">
-					<img id="gmail" src={logoGmail}/> <p>contatocooperflora@gmail.com</p>
+					<img id="gmail" src={logoGmail}  alt="Logo do Gmail" />contatocooperflora@gmail.com
 				</div>
 				<div className="col-sm">
 					<p id="licen">Licenciado XXX</p>
 				</div>
 				<div className="col-sm">
-					<img id="insta" src={logoInstagram}/>
-					<img id="face" src={logoFacebook}/>
+					<img id="insta" src={logoInstagram} alt="Logo do Instagram"/>
+					<img id="face" src={logoFacebook}  alt="Logo do Facebook"/>
 				</div>
 			</div>
 		</div>
