@@ -1,22 +1,33 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { PureComponent } from 'react';
+import { BrowserRouter as Router, Switch } from 'react-router-dom';
+import Routes from './routes';
 import './App.css';
-import  Header from './components/Header/Header';
-import Footer from './components/Footer/Footer';
-import Home from './components/Home/Home';
-import Login from './components/Login/Login';
 
+// import Login from './components/Login/Login';
 
-function App() {
-  return (
-    <div className="App">
-   
-    <Header/> 
-    <Home/>
-    <Footer/>
-     
-    </div>
-  );
+class App extends PureComponent {
+  render() {
+    return (
+        <Router>
+          <Switch>
+            <Routes />
+          </Switch>
+        </Router>
+    );
+  }
 }
+
+
+// function App() {
+//   return (
+//     <div className="App">
+   
+//     <Header/> 
+//     <Home/>
+//     <Footer/>
+     
+//     </div>
+//   );
+// }
 
 export default App;
