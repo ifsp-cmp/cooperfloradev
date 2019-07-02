@@ -1,3 +1,14 @@
-#email{
-	background-color: #98FB98;
+#enviar{
+	background-color: #4CAF50;
+	border: 2px solid #4CAF50;
+	border-radius: 8px;
+	color: white;
+	cursor: pointer;
+}
+#cancelar{
+	background-color: #DC143C;
+	border: 2px solid #DC143C;
+	border-radius: 8px;
+	color: white;
+	cursor: pointer;
 }
