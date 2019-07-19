@@ -6,16 +6,13 @@ import Usuario from './usuario.jpg'
 
 const cadastro=()=>{
 
-	return <div className="container-md" id="container-formularioCadastro">
-
-<div id ="cont" className="row-md-3">
-    <img src={Usuario} id ="logo" alt="Imagem do Usuário"/ >
-
-</div> 
-
-
-		<form className= "row-md-3">
-			  <div className="form-group row">
+	return (
+		<div className="container-md" id="container-formularioCadastro">
+			<div id ="cont" className="row-md-3">
+    			<img src={Usuario} id ="logo" alt="Imagem do Usuário"/ >
+			</div> 
+			<form className= "row-md-3">
+				<div className="form-group row">
 			    <label className="col-sm-2 col-form-label">Nome</label>
 			    <input  type="text"  className="form-control-plaintext col-sm-6" placeholder="Digite Seu Nome"></input>
 
@@ -47,12 +44,7 @@ const cadastro=()=>{
 		
 
 	</div>
-
-
-
-
-
+	);
 }
-
 
 export  default cadastro;
