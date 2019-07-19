@@ -1,6 +1,5 @@
 import React from 'react';
 import './Cadastro.css';
-import '../Header/boot.css';
 import fotoCapa from '../../assets/images/home.png';
 import Usuario from './usuario.jpg'
 
