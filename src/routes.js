@@ -1,8 +1,8 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
 import LandingPage from './pages/LandingPage/LandingPage';
-import Login from './components/Login/Login';
-import Cadastro from './components/Cadastro/Cadastro';
+import Login from './containers/Login/Login';
+import Cadastro from './containers/Cadastro/Cadastro';
 
 
 const Routes = () => (

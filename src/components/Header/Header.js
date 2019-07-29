@@ -4,25 +4,25 @@ import logo from './logo.jpg';
 
 const header =() => { 
 	
-	return < div id="menu-container" class= "container-ms"> 
+	return < div id="menu-container" className= "container-ms"> 
 		<div id="container-logo">
 		<img src={logo} id ="logo" alt="Logo da Cooperativa"/ >
 		</div>				
-			<nav class = " nav justify-content-end "> 
-				<ul class="nav justify-content-end">
-					<li class="nav-item">
-						<a class="nav-link active" href="#">Cooperflora</a>
+			<nav className = " nav justify-content-end "> 
+				<ul className="nav justify-content-end">
+					<li className="nav-item">
+						<a className="nav-link active" href="/cadastro">Cooperflora</a>
 						</li>
-						<li class="nav-item">
-						<a class="nav-link" href="#">Localização</a>
+						<li className="nav-item">
+						<a className="nav-link" href="/cadastro">Localização</a>
 						</li>
-						<li class="nav-item">
-						<a class="nav-link" href="/cadastro">Cadastro</a>
+						<li className="nav-item">
+						<a className="nav-link" href="/cadastro">Cadastro</a>
 						</li>
-						<li class="nav-item">
-						<a class="nav-link" href="#">O projeto</a>
+						<li className="nav-item">
+						<a className="nav-link" href="/cadastro">O projeto</a>
 						</li>
-					<button type="button" class="btn btn-success"> Entrar</button>
+					<a className="btn btn-success" href="/login"> Entrar</a>
 				</ul>
 			</nav>
 		</div>

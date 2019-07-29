@@ -1,13 +1,12 @@
 import React from 'react';
 import "./Footer.css";
-import './boot.css';
 import logoInstagram from "../../assets/images/instagram.png";
 import logoFacebook from "../../assets/images/facebook.png";
 import logoGmail from "../../assets/images/gmail.png";
 
 const footer =() => { 
 	return(
-		<div class="Footer" >
+		<div className="Footer" >
 			<div className="row">
 				<div className="col-sm">
 					<img id="gmail" src={logoGmail}  alt="Logo do Gmail" />contatocooperflora@gmail.com

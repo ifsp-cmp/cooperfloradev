@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './Cadastro.css';
-import fotoCapa from '../../assets/images/home.png';
-import Usuario from './usuario.jpg';
+// import fotoCapa from '../../assets/images/home.png';
+	import Usuario from './usuario.jpg';
 
 class Cadastro extends Component{
  
@@ -40,7 +40,7 @@ class Cadastro extends Component{
 		}
 	}
 
-	redder(){
+	render(){
 		return (
 			<div className="container-md" id="container-formularioCadastro">
 				<div id ="cont" className="row-md-3">
@@ -58,29 +58,27 @@ class Cadastro extends Component{
 				    <input type="text" className="form-control-plaintext col-sm-6"  placeholder="(xx) 9 1234-5678"></input>
 				  </div>
 
-				 <div class="form-group row">
-					    <label  class="col-sm-2 col-form-label">Email</label>
-					<div class="col-sm-10">
+				 <div className="form-group row">
+					    <label  className="col-sm-2 col-form-label">Email</label>
+					<div className="col-sm-10">
 					      <input type="text"  className="form-control-plaintext"  placeholder="email@exemplo.com"></input>
 				   	</div>
 					 </div>
 
-				  <div class="form-group row">
+				  <div className="form-group row">
 				    <label  className="col-sm-2 col-form-label">Senha</label>
 				    <div className="col-sm-10">
-				      <input type="password" class="form-control-plaintext"  placeholder="Password"></input>
+				      <input type="password" className="form-control-plaintext"  placeholder="Password"></input>
 				    </div>
 				 </div>
 			</form>
 			
-			<button type="button" class="btn btn-outline-success">Confirmar</button>
-			<button type="button" class="btn btn-outline-danger">Cancelar</button>
-				
-				
-
+			<button type="button" className="btn btn-outline-success">Confirmar</button>
+			<button type="button" className="btn btn-outline-danger">Cancelar</button>
 			</div>
 		);
-	}
-}
+	};
+};
 
-export  default Cadastro;
+
+export default Cadastro;

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import "./Login.css";
-import '../Footer/boot.css';
-import PageLayout from '../../components/PageLayout/PageLayout';
+import { connect } from 'react-redux';
 
+import "./Login.css";
+// import * as actions from '../../store/actions/index';
 
 class Login extends Component{ 
 
@@ -82,13 +82,20 @@ class Login extends Component{
 		this.setState({loginForm: updatedLoginForm, formIsValid: formIsValid});
 	 }
 
-	 formHandler = (event) => {
+	 submitHandler = (event) => {
 	 	event.preventDefault();
-	 	const formData = {};
-	 	for(let formElementIdentifier in this.state.loginForm){
-	 		formData[formElementIdentifier] = this.state.loginForm[formElementIdentifier].value;
-	 	}
+	 	console.log("Cheguei no submitHandler");
+	 	this.props.onLogin(event.target.email.value, event.target.password.value);
+
 	 }
+
+	 // formHandler = (event) => {
+	 // 	event.preventDefault();
+	 // 	const formData = {};
+	 // 	for(let formElementIdentifier in this.state.loginForm){
+	 // 		formData[formElementIdentifier] = this.state.loginForm[formElementIdentifier].value;
+	 // 	}
+	 // }
 
 	render(){
 		const formElementArray = [];
@@ -102,32 +109,54 @@ class Login extends Component{
 		let form = null;
 		form = (
 			<div>
-				<form onSubmit={this.formHandler}>
-					{formElementArray.map(formElement => {
-						let inputClass = ["Input"];
-						if(!formElement.config.valid && formElement.config.touched){
-							inputClass = ["Input", "Invalid"];
-						};
-						return (<input
-							className={inputClass.join(" ")}
-							key={formElement.id}
-							id={formElement.id}
-							type={formElement.config.elementType}
-							placeholder={formElement.config.elementConfig.placeholder}
-							value={formElement.config.value}
-							onChange={(event) => this.inputChangedHandler(event, formElement.id)} />)
-					})}
-				</form>
-				<button className="Button" disabled={!this.state.formIsValid}>Enviar</button>
+				{formElementArray.map(formElement => {
+					let inputClass = ["Input"];
+					if(!formElement.config.valid && formElement.config.touched){
+						inputClass = ["Input", "Invalid"];
+					};
+					return (<input
+						className={inputClass.join(" ")}
+						key={formElement.id}
+						id={formElement.id}
+						type={formElement.config.elementConfig.type}
+						placeholder={formElement.config.elementConfig.placeholder}
+						value={formElement.config.value}
+						onChange={(event) => this.inputChangedHandler(event, formElement.id)} />)
+				})}
 			</div>
 		);
 
 		return(
 			<div className="Login">
-				{form}
+				<form onSubmit={this.submitHandler}>
+					{form}
+					<button className="Button" disabled={!this.state.formIsValid}>Enviar</button>
+				</form>
 			</div>
 		);
-	}
+	};
+}
+
+
+/// const mapStateToProps = state => {
+// 	return {
+// 		userData: null
+// 	}
+// }
+
+const mapDispatchToProps = dispatch => {
+    return {
+		onLogin: (email, password) => dispatch({type: 'LOGIN_START', email: email, password: password})
+    };
 };
 
-export default Login; 
+// export default Login;
+
+
+/// const mapDispatchToProps = dispatch => {
+// 	return{
+// 		onLogin: (email, password) => dispatch(actions.login(email, password))
+// 	}
+// }
+
+export default connect(null, mapDispatchToProps)(Login); 
