@@ -1,7 +1,14 @@
 import * as actionsTypes from './actionsTypes';
 
-export const addUser = () => {
-    return null;
+export const addUser = (name, phone, email, password) => {
+    console.log("Cheguei no add user");
+    return {
+        type: actionsTypes.LOGIN_START,
+        name: name,
+        phone: phone,
+        email: email, 
+        password: password
+    };
 };
 
 export const removeUser = () => {

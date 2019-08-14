@@ -5,10 +5,12 @@ import firebase from 'firebase/app';
 
 const initialState = {
   user:{
-    token: null,
-    userId: null,
+    name: null,
+    phone: null,
     email: "Andre@bordignon.com",
-    password: null  
+    password: null,
+    token: null,
+    userId: null
   },
   error: null,
   loading: false,
