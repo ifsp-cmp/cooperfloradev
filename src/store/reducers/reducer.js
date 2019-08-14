@@ -1,11 +1,15 @@
-import * as actionTypes from './actions/actionsTypes';
-import firebaseSetup from '../firebaseSetup';
+import * as actionTypes from '../actions/actionsTypes';
+import firebaseSetup from '../../firebaseSetup';
 import firebase from 'firebase/app';
 
 
 const initialState = {
-  token: null,
-  userId: null,
+  user:{
+    token: null,
+    userId: null,
+    email: "Andre@bordignon.com",
+    password: null  
+  },
   error: null,
   loading: false,
   authRedirect: '/'
@@ -14,11 +18,11 @@ const initialState = {
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.LOGIN_START:
-      console.log("Cheguei no start");
-      console.log(action.email);
-      console.log(action.password);
+      // console.log("Cheguei no start");
+      // console.log(action.email);
+      // console.log(action.password);
 
-      console.log(firebaseSetup);
+      // console.log(firebaseSetup);
 
       firebase.auth().signInWithEmailAndPassword(action.email, action.password)
       .then(function(){

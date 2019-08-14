@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import "./Login.css";
-// import * as actions from '../../store/actions/index';
+import * as userActions from '../../store/actions/index';
+// import { loginStart } from '../../store/actions/users';
 
 class Login extends Component{ 
 
@@ -84,7 +85,7 @@ class Login extends Component{
 
 	 submitHandler = (event) => {
 	 	event.preventDefault();
-	 	console.log("Cheguei no submitHandler");
+	 	// console.log("Cheguei no submitHandler");
 	 	this.props.onLogin(event.target.email.value, event.target.password.value);
 
 	 }
@@ -144,19 +145,19 @@ class Login extends Component{
 // 	}
 // }
 
-const mapDispatchToProps = dispatch => {
-    return {
-		onLogin: (email, password) => dispatch({type: 'LOGIN_START', email: email, password: password})
-    };
-};
+// const mapDispatchToProps = dispatch => {
+//     return {
+// 		onLogin: (email, password) => dispatch({type: 'LOGIN_START', email: email, password: password})
+//     };
+// };
 
 // export default Login;
 
 
-/// const mapDispatchToProps = dispatch => {
-// 	return{
-// 		onLogin: (email, password) => dispatch(actions.login(email, password))
-// 	}
-// }
+const mapDispatchToProps = dispatch => {
+	return{
+		onLogin: (email, password) => dispatch(userActions.loginStart(email, password))
+	}
+}
 
 export default connect(null, mapDispatchToProps)(Login); 
