@@ -1,9 +1,10 @@
 import * as actionsTypes from './actionsTypes';
+import firebase from 'firebase/app';
 
 export const addUser = (name, phone, email, password) => {
     console.log("Cheguei no add user");
     return {
-        type: actionsTypes.LOGIN_START,
+        type: actionsTypes.ADD_USER,
         name: name,
         phone: phone,
         email: email, 
@@ -11,8 +12,11 @@ export const addUser = (name, phone, email, password) => {
     };
 };
 
-export const removeUser = () => {
-    return null;
+export const removeUser = (userId) => {
+    return {
+        type: actionsTypes.REMOVE_USER,
+        userId: userId
+    };
 };
 
 export const loginStart = (email, password) => {
@@ -32,4 +36,37 @@ export const loginSuccess = () => {
 export const loginFail = () => {
     return null
 };
+
+export const listUser =( user ) => {
+    return {
+        type: actionsTypes.LIST_USERS,
+        user: user
+    }
+}
+
+export const listUsersFailed =( error ) => {
+    return {
+        type: actionsTypes.LIST_USERS_FAILED,
+        error: error
+    };
+}
+
+export const getUsers = () =>{
+    console.log("Get Users from actions");
+    return dispatch => {
+        firebase.firestore().collection("users").get()
+        .then((querySnapshot) => {
+            querySnapshot.forEach((doc) => {
+                console.log(doc.id);
+                console.log(doc.data().name);
+                const user = doc.data();
+                dispatch(listUser(user));
+            });
+        })
+        .catch(function(error){
+            console.log(error);
+            dispatch(listUsersFailed(error));
+        });
+    };
+}
 

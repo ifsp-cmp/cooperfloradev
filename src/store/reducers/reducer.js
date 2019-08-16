@@ -1,5 +1,5 @@
 import * as actionTypes from '../actions/actionsTypes';
-import firebaseSetup from '../../firebaseSetup';
+// import firebaseSetup from '../../firebaseSetup';
 import firebase from 'firebase/app';
 
 
@@ -7,12 +7,12 @@ const initialState = {
   user:{
     name: null,
     phone: null,
-    email: "Andre@bordignon.com",
+    email: null,
     password: null,
     token: null,
     userId: null
   },
-  error: null,
+  error: false,
   loading: false,
   authRedirect: '/'
 }
@@ -57,6 +57,18 @@ const reducer = (state = initialState, action) => {
         error: action.error,
         loading: false
       }
+    case actionTypes.LIST_USERS:
+      console.log(action.user);
+      return{
+        ...state,
+        user: action.user,
+        error: false
+      }
+    case actionTypes.LIST_USERS_FAILED:
+        return{
+          ...state,
+          error: true
+        }
     default:
       return state;
   }
