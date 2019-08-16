@@ -12,6 +12,7 @@ const initialState = {
     token: null,
     userId: null
   },
+  users: null,
   error: false,
   loading: false,
   authRedirect: '/'
@@ -58,10 +59,10 @@ const reducer = (state = initialState, action) => {
         loading: false
       }
     case actionTypes.LIST_USERS:
-      console.log(action.user);
+      // console.log(action);
       return{
         ...state,
-        user: action.user,
+        users: action.users,
         error: false
       }
     case actionTypes.LIST_USERS_FAILED:

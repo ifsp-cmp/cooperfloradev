@@ -37,10 +37,10 @@ export const loginFail = () => {
     return null
 };
 
-export const listUser =( user ) => {
+export const listUser =( users ) => {
     return {
         type: actionsTypes.LIST_USERS,
-        user: user
+        users: users
     }
 }
 
@@ -53,15 +53,17 @@ export const listUsersFailed =( error ) => {
 
 export const getUsers = () =>{
     console.log("Get Users from actions");
+    let users = [];
     return dispatch => {
         firebase.firestore().collection("users").get()
         .then((querySnapshot) => {
             querySnapshot.forEach((doc) => {
-                console.log(doc.id);
-                console.log(doc.data().name);
+                // console.log(doc.id);
+                // console.log(doc.data().name);
                 const user = doc.data();
-                dispatch(listUser(user));
+                users.push(user);
             });
+            dispatch(listUser(users));
         })
         .catch(function(error){
             console.log(error);

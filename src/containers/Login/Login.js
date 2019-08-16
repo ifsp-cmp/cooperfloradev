@@ -63,6 +63,7 @@ class Login extends Component{
     }
 
 	inputChangedHandler(event, inputIdentifier) {
+		console.log("Cheguei na validação");
 		const updatedLoginForm = {
 			...this.state.loginForm
 	  	}
@@ -89,14 +90,6 @@ class Login extends Component{
 	 	this.props.onLogin(event.target.email.value, event.target.password.value);
 
 	 }
-
-	 // formHandler = (event) => {
-	 // 	event.preventDefault();
-	 // 	const formData = {};
-	 // 	for(let formElementIdentifier in this.state.loginForm){
-	 // 		formData[formElementIdentifier] = this.state.loginForm[formElementIdentifier].value;
-	 // 	}
-	 // }
 
 	render(){
 		const formElementArray = [];
@@ -137,22 +130,6 @@ class Login extends Component{
 		);
 	};
 }
-
-
-/// const mapStateToProps = state => {
-// 	return {
-// 		userData: null
-// 	}
-// }
-
-// const mapDispatchToProps = dispatch => {
-//     return {
-// 		onLogin: (email, password) => dispatch({type: 'LOGIN_START', email: email, password: password})
-//     };
-// };
-
-// export default Login;
-
 
 const mapDispatchToProps = dispatch => {
 	return{
