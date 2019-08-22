@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as userActions from '../../store/actions/index';
+import Spinner from '../../components/UI/Spinner/Spinner2';
 
 import './Cadastro.css';
 // import fotoCapa from '../../assets/images/home.png';
@@ -23,7 +24,7 @@ class Cadastro extends Component{
 				valid: false,
 				touched: false
 			},
-			fone: {
+			phone: {
 				elementType: 'input',
 				elementConfig: {
 					type: 'text',
@@ -66,7 +67,6 @@ class Cadastro extends Component{
 			}
 		},
 		formIsValid: false,
-		loading: false
 	}
 
 	checkValidity(value, rules) {
@@ -112,8 +112,13 @@ class Cadastro extends Component{
 
 	submitHandler = (event) => {
 		event.preventDefault();
-		console.log("Cheguei no submitHandler");
-		this.props.onAddUser();
+		// console.log("Cheguei no submitHandler");
+		const userData = {};
+		for (let formElementIdentifier in this.state.loginForm) {
+			userData[formElementIdentifier] = this.state.loginForm[formElementIdentifier].value;
+		}
+		// console.log("UserData:", userData);
+		this.props.onAddUser( userData );
 	}
 	
 	render(){
@@ -129,29 +134,33 @@ class Cadastro extends Component{
 		let form = null;
 		form = (
 			<div>
-				{formElementArray.map(formElement => {
-					let inputClass = ["Input"];
-					if(!formElement.config.valid && formElement.config.touched){
-						inputClass = ["Input", "Invalid"];
-					};
-					return (<input
-						className={inputClass.join(" ")}
-						key={formElement.id}
-						id={formElement.id}
-						type={formElement.config.elementConfig.type}
-						placeholder={formElement.config.elementConfig.placeholder}
-						value={formElement.config.value}
-						onChange={(event) => this.inputChangedHandler(event, formElement.id)} />)
-				})}
+				<form onSubmit={this.submitHandler}>
+					{formElementArray.map(formElement => {
+						let inputClass = ["Input"];
+						if(!formElement.config.valid && formElement.config.touched){
+							inputClass = ["Input", "Invalid"];
+						};
+						return (<input
+							className={inputClass.join(" ")}
+							key={formElement.id}
+							id={formElement.id}
+							type={formElement.config.elementConfig.type}
+							placeholder={formElement.config.elementConfig.placeholder}
+							value={formElement.config.value}
+							onChange={(event) => this.inputChangedHandler(event, formElement.id)} />)
+					})}
+					<button className="Button" disabled={!this.state.formIsValid}>Enviar</button>
+				</form>
 			</div>
 		);
 
+		if (this.props.loading) {
+			form = <Spinner />;
+		}
+
 		return(
 			<div className="Cadastro">
-				<form onSubmit={this.submitHandler}>
-					{form}
-					<button className="Button" disabled={!this.state.formIsValid}>Enviar</button>
-				</form>
+				{form}
 			</div>
 		);
 	};
@@ -159,16 +168,14 @@ class Cadastro extends Component{
 	
 const mapStateToProps = state => {
 	return {
-		name: state.user.name,
-		name: state.user.phone,
-		email: state.user.email,
-		password: state.user.password
+		userData: state.userData,
+		loading: state.loading
 	};
 }
 
 const mapDispatchToProps = dispatch => {
 	return{
-		onAddUser: (name, phone, email, password) => dispatch(userActions.addUser(name, phone, email, password))
+		onAddUser: (userData) => dispatch(userActions.addUser(userData))
 	}
 }
 

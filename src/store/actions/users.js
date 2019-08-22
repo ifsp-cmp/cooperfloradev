@@ -1,17 +1,6 @@
 import * as actionsTypes from './actionsTypes';
 import firebase from 'firebase/app';
 
-export const addUser = (name, phone, email, password) => {
-    console.log("Cheguei no add user");
-    return {
-        type: actionsTypes.ADD_USER,
-        name: name,
-        phone: phone,
-        email: email, 
-        password: password
-    };
-};
-
 export const removeUser = (userId) => {
     return {
         type: actionsTypes.REMOVE_USER,
@@ -41,6 +30,66 @@ export const listUser =( users ) => {
     return {
         type: actionsTypes.LIST_USERS,
         users: users
+    }
+}
+
+export const addUserSuccess = (userData) => {
+    return {
+        type: actionsTypes.ADD_USER_SUCCESS,
+        userData: userData
+    };
+}
+
+export const addUserFailed = ( error ) => {
+    return {
+        type: actionsTypes.ADD_USER_FAILED,
+        error: error
+    };
+}
+
+export const addUserStart = () => {
+    return {
+        type: actionsTypes.ADD_USER_START
+    }
+}
+
+export const addUser = ( userData ) => {
+    return dispatch => {
+        console.log("Cheguei no action adduser");
+        // dispatch(addUserStart());
+        dispatch(addUserStart());
+
+        console.log(userData);
+        let userEmail = userData.email;
+        let userPassword = userData.password;
+        firebase.auth().createUserWithEmailAndPassword(userEmail, userPassword)
+        .then(function( res ){
+            console.log("Retorno da criação do usuário:", res)
+            console.log(res.user.uid);
+            console.log("Usuário criado com sucesso");
+            firebase.firestore().collection("users").doc(res.user.uid).set({
+                name: userData.name,
+                phone: userData.phone,
+                email: userData.email,
+                timestamp: firebase.firestore.FieldValue.serverTimestamp()
+            })
+            .then(function(docRef) {
+                console.log("Dados armazenados com sucesso");
+                userData.userId = res.user.uid;
+                dispatch(addUserSuccess(userData));
+            })
+            .catch(function(error) {
+                console.error("Erro ao incluir o livro: ", error);
+                dispatch(addUserFailed(error));
+            });
+        })
+        .catch(function(error) {
+            let errorCode = error.code;
+            let errorMessage = error.message;
+            console.log(errorCode);
+            console.log(errorMessage);
+            dispatch(addUserFailed(error));
+        });
     }
 }
 

@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import * as userActions from '../../store/actions/index';
-import Spinner from '../../components/UI/Spinner/Spinner';
 import './ListarUsuarios.css';
 
 class ListarUsuarios extends Component{
@@ -14,15 +13,11 @@ class ListarUsuarios extends Component{
 
     render(){
         // console.log(this.props.users);
-        let listUsers = null;
+        let listUsers = <p>Loading...</p>;
         let users = null;
-        // let users = [
-        //     {name: "Vera", phone: "999999999"},
-        //     {name: "Vera", phone: "999999999"}
-        // ];
         if(this.props.users){ users = this.props.users};
-        console.log("Propsusers", this.props.users);
-        console.log("Users", users);
+        // console.log("Propsusers", this.props.users);
+        // console.log("Users", users);
         if(this.props.users){
             listUsers = (
                 <div>
@@ -39,7 +34,6 @@ class ListarUsuarios extends Component{
         }
         return(
             <div>
-                {Spinner}
                 {listUsers}
             </div>
         );
