@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import firebase from 'firebase/app';
 
 import "./Login.css";
 import * as userActions from '../../store/actions/index';
@@ -119,7 +120,7 @@ class Login extends Component{
 				})}
 			</div>
 		);
-
+		console.log(firebase.auth().currentUser);
 		return(
 			<div className="Login">
 				<form onSubmit={this.submitHandler}>
@@ -133,7 +134,7 @@ class Login extends Component{
 
 const mapDispatchToProps = dispatch => {
 	return{
-		onLogin: (email, password) => dispatch(userActions.loginStart(email, password))
+		onLogin: (email, password) => dispatch(userActions.login(email, password))
 	}
 }
 

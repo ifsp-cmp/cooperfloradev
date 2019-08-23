@@ -35,28 +35,16 @@ const reducer = (state = initialState, action) => {
         loading: false
     }
     case actionTypes.LOGIN_START:
-      // console.log("Cheguei no start");
-      // console.log(action.email);
-      // console.log(action.password);
-
-      // console.log(firebaseSetup);
-
-      // firebase.auth().signInWithEmailAndPassword(action.email, action.password)
-      // .then(function(){
-      //   console.log("Usuário logado com sucesso");
-      // })
-      // .catch(function(error) {
-      //   // Handle Errors here.
-      //   var errorCode = error.code;
-      //   var errorMessage = error.message;
-      //   console.log(errorMessage);
-      //   //document.getElementById("errorMessage").innerText = errorMessage;
-      // });
-
       return {
         ...state,
         error: null,
         loading: true
+      }
+    case actionTypes.LOGIN_FAILED:
+      return {
+        ...state,
+        error: action.error,
+        loading: false
       }
     case actionTypes.LOGIN_SUCCESS:
       return {
@@ -64,12 +52,6 @@ const reducer = (state = initialState, action) => {
         token: action.token,
         userId: action.userId,
         error: null,
-        loading: false
-      }
-    case actionTypes.LOGIN_FAIL:
-      return {
-        ...state,
-        error: action.error,
         loading: false
       }
     case actionTypes.LIST_USERS:

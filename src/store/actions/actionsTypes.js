@@ -1,6 +1,6 @@
 export const LOGIN_START = 'LOGIN_START';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
-export const LOGIN_FAIL = 'LOGIN_FAIL';
+export const LOGIN_FAILED = 'LOGIN_FAILED';
 
 export const ADD_USER_START = 'ADD_USER_START';
 export const ADD_USER_SUCCESS = 'ADD_USER_SUCCESS';

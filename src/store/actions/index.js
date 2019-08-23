@@ -2,7 +2,5 @@ export{
 	addUser,
 	removeUser,
 	getUsers,
-	loginStart,
-	loginFail,
-	loginSuccess	
+	login,
 } from './users.js'

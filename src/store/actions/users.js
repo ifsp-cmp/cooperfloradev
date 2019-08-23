@@ -8,23 +8,40 @@ export const removeUser = (userId) => {
     };
 };
 
-export const loginStart = (email, password) => {
-    console.log("Cheguei no novo login start");
-    console.log(email);
-    return {
-        type: actionsTypes.LOGIN_START, 
-        email: email, 
-        password: password
-    }
-};
-
 export const loginSuccess = () => {
     return null;
 };
 
-export const loginFail = () => {
-    return null
+export const loginFailed = () => {
+    return {
+        type: actionsTypes.LOGIN_FAILED 
+    }
 };
+
+export const loginStart = () => {
+    return {
+        type: actionsTypes.LOGIN_START 
+    }
+};
+
+export const login = (email, password) => {
+    return dispatch => {
+        dispatch(loginStart());
+        firebase.auth().signInWithEmailAndPassword(email, password)
+        .then(function( data ){
+            console.log("Usuário logado com sucesso");
+            console.log( data );
+            dispatch(loginSuccess());
+        })
+        .catch(function(error) {
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            console.log(errorMessage);
+            console.log(errorCode);
+            dispatch(loginFailed());
+        });
+    }
+}
 
 export const listUser =( users ) => {
     return {
@@ -57,13 +74,13 @@ export const addUser = ( userData ) => {
     return dispatch => {
         // console.log("Cheguei no action adduser");
         dispatch(addUserStart());
-
+        
         // console.log(userData);
         let userEmail = userData.email;
         let userPassword = userData.password;
         firebase.auth().createUserWithEmailAndPassword(userEmail, userPassword)
         .then(function( res ){
-            // console.log("Retorno da criação do usuário:", res)
+            console.log("Retorno da criação do usuário:", res)
             // console.log(res.user.uid);
             console.log("Usuário criado com sucesso");
             firebase.firestore().collection("users").doc(res.user.uid).set({
@@ -75,6 +92,7 @@ export const addUser = ( userData ) => {
             .then(function(docRef) {
                 console.log("Dados armazenados com sucesso");
                 userData.userId = res.user.uid;
+                //userData.token = "1111";
                 dispatch(addUserSuccess(userData));
             })
             .catch(function(error) {

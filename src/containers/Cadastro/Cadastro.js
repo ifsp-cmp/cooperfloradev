@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Route, Redirect } from 'react-router-dom';
 import * as userActions from '../../store/actions/index';
 import Spinner from '../../components/UI/Spinner/Spinner2';
 
 import './Cadastro.css';
 // import fotoCapa from '../../assets/images/home.png';
-import Usuario from './usuario.jpg';
+//import Usuario from './usuario.jpg';
 
 class Cadastro extends Component{
 	
@@ -130,10 +131,14 @@ class Cadastro extends Component{
 			});
 		}
 		// console.log(formElementArray);
+		
+		//Redireciona caso o usuário tenha sido cadastrado. 
+		let redirect = this.props.userData.token ? <Redirect to='/video' /> : null;
 
 		let form = null;
 		form = (
 			<div>
+				{redirect}
 				<form onSubmit={this.submitHandler}>
 					{formElementArray.map(formElement => {
 						let inputClass = ["Input"];
