@@ -11,7 +11,7 @@ const header =() => {
 			<nav className = " nav justify-content-end "> 
 				<ul className="nav justify-content-end">
 					<li className="nav-item">
-						<a className="nav-link active" href="/cadastro">Cooperflora</a>
+						<a className="nav-link active" href="/cooperflora">Cooperflora</a>
 						</li>
 						<li className="nav-item">
 						<a className="nav-link" href="/cadastro">Localização</a>
@@ -20,7 +20,7 @@ const header =() => {
 						<a className="nav-link" href="/cadastro">Cadastro</a>
 						</li>
 						<li className="nav-item">
-						<a className="nav-link" href="/cadastro">O projeto</a>
+						<a className="nav-link" href="/projeto">O projeto</a>
 						</li>
 					<a className="btn btn-success" href="/login"> Entrar</a>
 				</ul>

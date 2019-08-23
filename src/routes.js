@@ -4,6 +4,8 @@ import LandingPage from './pages/LandingPage/LandingPage';
 import Login from './containers/Login/Login';
 import Cadastro from './containers/Cadastro/Cadastro';
 import ListarUsuarios from './containers/ListarUsuarios/ListarUsuarios';
+import Projeto from './components/Projeto/Projeto';
+import Cooperflora from './components/Cooperflora/Cooperflora';
 
 const Routes = () => (
   <React.Fragment>
@@ -11,6 +13,8 @@ const Routes = () => (
     <Route exact path="/login" component={Login} />
     <Route exact path="/cadastro" component={Cadastro} />
     <Route exact path="/listarusuarios" component={ListarUsuarios} />
+    <Route exact path="/projeto" component={Projeto} />
+    <Route exact path="/cooperflora" component={Cooperflora} />
   </React.Fragment>
 );
 

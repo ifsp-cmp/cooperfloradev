@@ -55,17 +55,16 @@ export const addUserStart = () => {
 
 export const addUser = ( userData ) => {
     return dispatch => {
-        console.log("Cheguei no action adduser");
-        // dispatch(addUserStart());
+        // console.log("Cheguei no action adduser");
         dispatch(addUserStart());
 
-        console.log(userData);
+        // console.log(userData);
         let userEmail = userData.email;
         let userPassword = userData.password;
         firebase.auth().createUserWithEmailAndPassword(userEmail, userPassword)
         .then(function( res ){
-            console.log("Retorno da criação do usuário:", res)
-            console.log(res.user.uid);
+            // console.log("Retorno da criação do usuário:", res)
+            // console.log(res.user.uid);
             console.log("Usuário criado com sucesso");
             firebase.firestore().collection("users").doc(res.user.uid).set({
                 name: userData.name,
@@ -79,7 +78,7 @@ export const addUser = ( userData ) => {
                 dispatch(addUserSuccess(userData));
             })
             .catch(function(error) {
-                console.error("Erro ao incluir o livro: ", error);
+                console.error("Erro ao incluir o usuário: ", error);
                 dispatch(addUserFailed(error));
             });
         })
