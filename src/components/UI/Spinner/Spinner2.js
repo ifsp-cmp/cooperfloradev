@@ -4,7 +4,9 @@ import './Spinner2.css';
 const spinner = () => {
 
   return (
-    <div className="spinner div-spinner" ></div>
+    <div className="div-spinner">
+      <div className="spinner" ></div>
+    </div>
 
   );
 }

@@ -8,20 +8,37 @@ export const removeUser = (userId) => {
     };
 };
 
-export const loginSuccess = () => {
-    return null;
+export const loginSuccess = ( userData ) => {
+    return {
+        type: actionsTypes.LOGIN_SUCCESS,
+        userData: userData
+    };
 };
 
-export const loginFailed = () => {
+export const loginFail = ( errorMessage ) => {
     return {
-        type: actionsTypes.LOGIN_FAILED 
-    }
+        type: actionsTypes.LOGIN_FAIL,
+        error: errorMessage
+    };
 };
+
+export const logout = () => {
+    firebase.auth().signOut()
+    .then(function() {
+        console.log("Usuário signout");
+    })
+    .catch(function(error) {
+        console.log("Erro no  signout");
+    });
+    return {
+        type: actionsTypes.LOGOUT
+    };
+}
 
 export const loginStart = () => {
     return {
         type: actionsTypes.LOGIN_START 
-    }
+    };
 };
 
 export const login = (email, password) => {
@@ -31,23 +48,72 @@ export const login = (email, password) => {
         .then(function( data ){
             console.log("Usuário logado com sucesso");
             console.log( data );
-            dispatch(loginSuccess());
+            console.log(data.user.uid);
+            let docRef = firebase.firestore().collection("users").doc(data.user.uid);
+            docRef.get()
+            .then(function(doc) {
+                if (doc.exists) {
+                    console.log("Document data:", doc.data());
+                    let userData = doc.data();
+                    console.log(userData);
+                    dispatch(loginSuccess( userData ));
+                } else {
+                    // doc.data() will be undefined in this case
+                    console.log("No such document!");
+                }
+            })
+            .catch(function(error) {
+                console.log("Error getting document:", error);
+            });
         })
         .catch(function(error) {
             var errorCode = error.code;
             var errorMessage = error.message;
             console.log(errorMessage);
             console.log(errorCode);
-            dispatch(loginFailed());
+            dispatch(loginFail(errorMessage));
         });
     }
+}
+
+export const forgotPasswordStart = () => {
+    return {
+        type: actionsTypes.FORGOT_PASSWORD_START
+    };
+}
+
+export const forgotPasswordSuccess = ( msg ) => {
+    return {
+        type: actionsTypes.FORGOT_PASSWORD_SUCCESS,
+        userMessage: msg
+    };
+}
+
+export const forgotPasswordFail = ( msg ) => {
+    return {
+        type: actionsTypes.FORGOT_PASSWORD_FAIL,
+        userMessage: msg
+    }; 
+}
+
+export const forgotPassword = ( email ) => {
+    return dispatch => {
+        // console.log("Cheguei no action adduser");
+        dispatch(forgotPasswordStart());
+        console.log(email);
+        firebase.auth().sendPasswordResetEmail(email).then(function() {
+            dispatch(forgotPasswordSuccess('E-mail enviado com sucesso. Consulte seu e-mail para resetar a senha.'));
+        }).catch(function(error) {
+            dispatch(forgotPasswordFail('Erro ao enviar e-mail. Confira o endereço de e-mail.'));
+        });  
+    };
 }
 
 export const listUser =( users ) => {
     return {
         type: actionsTypes.LIST_USERS,
         users: users
-    }
+    };
 }
 
 export const addUserSuccess = (userData) => {
@@ -57,9 +123,9 @@ export const addUserSuccess = (userData) => {
     };
 }
 
-export const addUserFailed = ( error ) => {
+export const addUserFail = ( error ) => {
     return {
-        type: actionsTypes.ADD_USER_FAILED,
+        type: actionsTypes.ADD_USER_FAIL,
         error: error
     };
 }
@@ -74,7 +140,6 @@ export const addUser = ( userData ) => {
     return dispatch => {
         // console.log("Cheguei no action adduser");
         dispatch(addUserStart());
-        
         // console.log(userData);
         let userEmail = userData.email;
         let userPassword = userData.password;
@@ -97,7 +162,7 @@ export const addUser = ( userData ) => {
             })
             .catch(function(error) {
                 console.error("Erro ao incluir o usuário: ", error);
-                dispatch(addUserFailed(error));
+                dispatch(addUserFail(error));
             });
         })
         .catch(function(error) {
@@ -105,14 +170,14 @@ export const addUser = ( userData ) => {
             let errorMessage = error.message;
             console.log(errorCode);
             console.log(errorMessage);
-            dispatch(addUserFailed(error));
+            dispatch(addUserFail(error));
         });
     }
 }
 
-export const listUsersFailed =( error ) => {
+export const listUsersFail =( error ) => {
     return {
-        type: actionsTypes.LIST_USERS_FAILED,
+        type: actionsTypes.LIST_USERS_FAIL,
         error: error
     };
 }
@@ -133,7 +198,7 @@ export const getUsers = () =>{
         })
         .catch(function(error){
             console.log(error);
-            dispatch(listUsersFailed(error));
+            dispatch(listUsersFail(error));
         });
     };
 }

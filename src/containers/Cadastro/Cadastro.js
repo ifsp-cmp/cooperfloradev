@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Route, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import * as userActions from '../../store/actions/index';
 import Spinner from '../../components/UI/Spinner/Spinner2';
 
@@ -154,6 +154,7 @@ class Cadastro extends Component{
 							value={formElement.config.value}
 							onChange={(event) => this.inputChangedHandler(event, formElement.id)} />)
 					})}
+					<br />
 					<button className="Button" disabled={!this.state.formIsValid}>Enviar</button>
 				</form>
 			</div>
@@ -174,7 +175,8 @@ class Cadastro extends Component{
 const mapStateToProps = state => {
 	return {
 		userData: state.userData,
-		loading: state.loading
+		loading: state.loading,
+		error: state.error
 	};
 }
 

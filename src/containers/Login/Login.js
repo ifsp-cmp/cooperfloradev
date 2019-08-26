@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import firebase from 'firebase/app';
+import { Redirect } from 'react-router-dom';
+import Spinner from '../../components/UI/Spinner/Spinner2';
+import firebase from 'firebase';
 
 import "./Login.css";
 import * as userActions from '../../store/actions/index';
-// import { loginStart } from '../../store/actions/users';
 
 class Login extends Component{ 
 
@@ -43,6 +44,11 @@ class Login extends Component{
 		loading: false
 	}
 
+	componentDidMount() {
+		// let redirect = firebase.auth().currentUser ? <Redirect to='/video' /> : null;
+	}
+	
+
 	checkValidity(value, rules) {
 	    let isValid = true;
 	    if (!rules) {
@@ -64,7 +70,6 @@ class Login extends Component{
     }
 
 	inputChangedHandler(event, inputIdentifier) {
-		console.log("Cheguei na validação");
 		const updatedLoginForm = {
 			...this.state.loginForm
 	  	}
@@ -104,32 +109,54 @@ class Login extends Component{
 		let form = null;
 		form = (
 			<div>
-				{formElementArray.map(formElement => {
-					let inputClass = ["Input"];
-					if(!formElement.config.valid && formElement.config.touched){
-						inputClass = ["Input", "Invalid"];
-					};
-					return (<input
-						className={inputClass.join(" ")}
-						key={formElement.id}
-						id={formElement.id}
-						type={formElement.config.elementConfig.type}
-						placeholder={formElement.config.elementConfig.placeholder}
-						value={formElement.config.value}
-						onChange={(event) => this.inputChangedHandler(event, formElement.id)} />)
-				})}
-			</div>
-		);
-		console.log(firebase.auth().currentUser);
-		return(
-			<div className="Login">
 				<form onSubmit={this.submitHandler}>
-					{form}
+					{formElementArray.map(formElement => {
+						let inputClass = ["Input"];
+						if(!formElement.config.valid && formElement.config.touched){
+							inputClass = ["Input", "Invalid"];
+						};
+						return (<input
+							className={inputClass.join(" ")}
+							key={formElement.id}
+							id={formElement.id}
+							type={formElement.config.elementConfig.type}
+							placeholder={formElement.config.elementConfig.placeholder}
+							value={formElement.config.value}
+							onChange={(event) => this.inputChangedHandler(event, formElement.id)} />)
+					})}
+					<br />
 					<button className="Button" disabled={!this.state.formIsValid}>Enviar</button>
 				</form>
 			</div>
 		);
+
+		let error = this.props.error ? <p className="alert alert-danger">Erro ao logar</p> : null;
+
+		// let redirect = <Redirect to='/video' />;
+
+		if (this.props.loading) {
+			form = <Spinner />;
+		}
+
+		return(
+			<div className="Login">
+				{/* {redirect} */}
+				{form}
+				{error}
+				<div>
+					<a href="/esqueciminhasenha">Esqueci Minha Senha</a>
+				</div>
+			</div>
+		);
 	};
+}
+
+const mapStateToProps = state => {
+	return {
+		userData: state.userData,
+		error: state.error,
+		loading: state.loading
+	}
 }
 
 const mapDispatchToProps = dispatch => {
@@ -138,4 +165,4 @@ const mapDispatchToProps = dispatch => {
 	}
 }
 
-export default connect(null, mapDispatchToProps)(Login); 
+export default connect(mapStateToProps, mapDispatchToProps)(Login); 

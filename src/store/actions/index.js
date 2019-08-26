@@ -3,4 +3,6 @@ export{
 	removeUser,
 	getUsers,
 	login,
+	logout,
+	forgotPassword
 } from './users.js'

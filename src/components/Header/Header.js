@@ -1,9 +1,14 @@
 import React from 'react';
+import firebase from 'firebase';
 import './Header.css';
 import logo from './logo.jpg';
 
 const header =() => { 
 	
+	firebase.auth().currentUser 
+	? console.log("Usuários logado")
+	: console.log("usuários não logado");
+
 	return < div id="menu-container" className= "container-ms"> 
 		<div id="container-logo">
 		<img src={logo} id ="logo" alt="Logo da Cooperativa"/ >
@@ -11,18 +16,22 @@ const header =() => {
 			<nav className = " nav justify-content-end "> 
 				<ul className="nav justify-content-end">
 					<li className="nav-item">
+						<a className="nav-link active" href="/home">Home</a>
+					</li>
+					<li>
 						<a className="nav-link active" href="/cooperflora">Cooperflora</a>
-						</li>
-						<li className="nav-item">
+					</li>
+					<li className="nav-item">
 						<a className="nav-link" href="/cadastro">Localização</a>
-						</li>
-						<li className="nav-item">
+					</li>
+					<li className="nav-item">
 						<a className="nav-link" href="/cadastro">Cadastro</a>
-						</li>
-						<li className="nav-item">
+					</li>
+					<li className="nav-item">
 						<a className="nav-link" href="/projeto">O projeto</a>
-						</li>
-					<a className="btn btn-success" href="/login"> Entrar</a>
+					</li>
+					<a className="btn btn-success" href="/login">Entrar</a>
+					<a className="btn btn-success" href="/logout">Sair</a>
 				</ul>
 			</nav>
 		</div>
