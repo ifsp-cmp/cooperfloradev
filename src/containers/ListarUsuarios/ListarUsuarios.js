@@ -1,14 +1,24 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import Modal from '../../components/UI/Modal/Modal';
+
 import * as userActions from '../../store/actions/index';
 import './ListarUsuarios.css';
 
 class ListarUsuarios extends Component{
 
+    state = {
+        showModal: true
+    }
+
     componentDidMount(){
         // console.log("cheguei no didmount");
         this.props.onGetUsers();
+    }
+
+    changeModal = () => {
+        this.setState({ showModal: false });
     }
 
     render(){
@@ -34,7 +44,9 @@ class ListarUsuarios extends Component{
         }
         return(
             <div>
-                {listUsers}
+                <Modal show={this.state.showModal} modalClosed={this.changeModal}>
+                    {listUsers}
+                </Modal>
             </div>
         );
     };

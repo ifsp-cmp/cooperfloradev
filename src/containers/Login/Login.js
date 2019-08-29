@@ -138,6 +138,15 @@ class Login extends Component{
 			form = <Spinner />;
 		}
 
+		firebase.auth().onAuthStateChanged(function(user) {
+			if (user) {
+				console.log("Usuário está logado");
+			} else {
+				console.log("Usuário não está logado");
+			}
+		});
+
+
 		return(
 			<div className="Login">
 				{/* {redirect} */}

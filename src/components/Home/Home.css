@@ -1,3 +1,13 @@
-.home {
+.Home {
+	top: 0;
+	left: 0;
+	margin-top: 0;
+	z-index: 10;
 	width: 100%;
 }
+
+.Home img{
+	width: 100%;
+	margin-top: 0;
+}
+

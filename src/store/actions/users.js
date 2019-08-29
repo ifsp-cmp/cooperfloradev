@@ -56,6 +56,7 @@ export const login = (email, password) => {
                     console.log("Document data:", doc.data());
                     let userData = doc.data();
                     console.log(userData);
+                    userData.autheticated = true;
                     dispatch(loginSuccess( userData ));
                 } else {
                     // doc.data() will be undefined in this case

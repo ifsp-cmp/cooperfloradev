@@ -8,7 +8,8 @@ const initialState = {
     email: null,
     password: null,
     token: null,
-    userId: null
+    userId: null,
+    isUserAuthenticated: false
   },
   users: null,
   error: false,
@@ -57,16 +58,16 @@ const reducer = (state = initialState, action) => {
       loading: false
     }
     case actionTypes.LOGOUT:
-    return {
-      state: initialState
-    }
+      return {
+        state: initialState
+      }
     case actionTypes.FORGOT_PASSWORD_START:
       return {
         ...state,
         error: null,
         loading: true
       }    
-      case actionTypes.FORGOT_PASSWORD_SUCCESS:
+    case actionTypes.FORGOT_PASSWORD_SUCCESS:
         return {
           ...state,
           error: null,
@@ -95,7 +96,7 @@ const reducer = (state = initialState, action) => {
       loading: false
     }
     default:
-    return state;
+      return state;
   }
 }
 

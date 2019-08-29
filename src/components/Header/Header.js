@@ -5,9 +5,10 @@ import logo from './logo.jpg';
 
 const header =() => { 
 	
-	firebase.auth().currentUser 
-	? console.log("Usuários logado")
-	: console.log("usuários não logado");
+	// let user = firebase.auth().currentUser;
+	// console.log(user);
+	// ? console.log("Usuários logado")
+	// : console.log("usuários não logado");
 
 	return < div id="menu-container" className= "container-ms"> 
 		<div id="container-logo">
@@ -16,7 +17,7 @@ const header =() => {
 			<nav className = " nav justify-content-end "> 
 				<ul className="nav justify-content-end">
 					<li className="nav-item">
-						<a className="nav-link active" href="/home">Home</a>
+						<a className="nav-link active" href="/">Home</a>
 					</li>
 					<li>
 						<a className="nav-link active" href="/cooperflora">Cooperflora</a>

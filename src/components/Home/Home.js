@@ -5,9 +5,7 @@ import fotoCapa from '../../assets/images/home.png';
 const home = () => {
 	return (
 		<div className='Home'>
-			<div>
-				<img className="home" src={fotoCapa} alt="Foto da Capa" />
-			</div>
+			<img src={fotoCapa} alt="Foto da Capa" />
 		</div>
 	);
 }
