@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+// import { Redirect } from 'react-router-dom';
 import Spinner from '../../components/UI/Spinner/Spinner2';
 import firebase from 'firebase';
 

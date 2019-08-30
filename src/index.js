@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk'; //Para fazer comunicação assincrona
@@ -8,10 +7,7 @@ import thunk from 'redux-thunk'; //Para fazer comunicação assincrona
 import './index.css';
 import App from './App';
 import firebaseSetup from './firebaseSetup';
-
 import * as serviceWorker from './serviceWorker';
-import registerServiceWorker from './registerServiceWorker';
-
 import reducer from './store/reducers/reducer';
 
 firebaseSetup();
@@ -24,10 +20,8 @@ const store = createStore(reducer, composeEnhancers(
 ));
 
 const app = (
-	<Provider store={store}>
-		<BrowserRouter>
-			<App />
-		</BrowserRouter>
+	<Provider store={store}>	
+		<App />
 	</Provider>
 );
 

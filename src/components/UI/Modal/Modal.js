@@ -3,7 +3,6 @@ import React from 'react';
 import Backdrop from '../Backdrop/Backdrop';
 
 import './Modal.css'
-import { createPropertySignature } from 'typescript';
 
 const modal = (props) => (
     <div>

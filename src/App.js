@@ -1,9 +1,9 @@
 import React, { PureComponent } from 'react';
 import { BrowserRouter as Router, Switch } from 'react-router-dom';
-import { connect } from 'react-redux';
+// import { connect } from 'react-redux';
 import Routes from './routes';
 import Layout from './containers/Layout/Layout';
-import * as actions from './store/actions/index';
+// import * as actions from './store/actions/index';
 
 // import Login from './components/Login/Login';
 
