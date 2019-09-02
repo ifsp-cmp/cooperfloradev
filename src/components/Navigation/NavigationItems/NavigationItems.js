@@ -4,16 +4,24 @@ import NavigationItem from './NavigationItem/NavigationItem';
 
 import './NavigationItems.css'
 
-const navigationItems = () => (
+const navigationItems = (props) => (
     <ul className='NavigationItems'>
         <NavigationItem link='/' active>Home</NavigationItem>
         <NavigationItem link='/cooperflora'>Cooperflora</NavigationItem>
         <NavigationItem link='/projeto'>O projeto</NavigationItem>
-        <NavigationItem link='/listarusuarios'>Listar</NavigationItem>
-        <NavigationItem link='/training'>Formação</NavigationItem>
-        <NavigationItem link='/cadastro'>Cadastro</NavigationItem>
-        <NavigationItem link='/login'>Login</NavigationItem>
-        <NavigationItem link='/logout'>Logout</NavigationItem>
+        { props.isAuthenticated ?
+            <NavigationItem link='/listarusuarios'>Listar</NavigationItem> : null
+        }
+        { props.isAuthenticated ?
+            <NavigationItem link='/training'>Formação</NavigationItem> : null
+        }
+        { !props.isAuthenticated ?
+            <NavigationItem link='/cadastro'>Cadastro</NavigationItem> :  null
+        }
+        { !props.isAuthenticated 
+            ? <NavigationItem link='/login'>Login</NavigationItem>
+            : <NavigationItem link='/logout'>Logout</NavigationItem>
+        }
     </ul>
 );
 

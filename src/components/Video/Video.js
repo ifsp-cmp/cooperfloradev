@@ -1,12 +1,14 @@
 import React from 'react';
 import './Video.css';
+import video from '../../assets/videos/videoteste.mp4';
 
 const Video = () => {
 	return (
 		<div className='Video'>
-			<div>
-				<p>Aqui será apresentado o vídeo</p>
-			</div>
+			<video controls>
+				<source src={video} type="video/mp4" />
+				Your browser does not support the video tag.
+            </video>
 		</div>
 	);
 }

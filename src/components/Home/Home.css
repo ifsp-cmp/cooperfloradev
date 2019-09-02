@@ -9,5 +9,15 @@
 .Home img{
 	width: 100%;
 	margin-top: 0;
+	z-index: 19;
 }
+
+/* body {
+	background: url(http://flickholdr.com/1600/1200/sunset) no-repeat center top fixed;
+	
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+} */
 

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-// import { Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import Spinner from '../../components/UI/Spinner/Spinner2';
 import firebase from 'firebase';
 
@@ -43,11 +43,6 @@ class Login extends Component{
 		formIsValid: false,
 		loading: false
 	}
-
-	componentDidMount() {
-		// let redirect = firebase.auth().currentUser ? <Redirect to='/video' /> : null;
-	}
-	
 
 	checkValidity(value, rules) {
 	    let isValid = true;
@@ -138,18 +133,14 @@ class Login extends Component{
 			form = <Spinner />;
 		}
 
-		firebase.auth().onAuthStateChanged(function(user) {
-			if (user) {
-				console.log("Usuário está logado");
-			} else {
-				console.log("Usuário não está logado");
-			}
-		});
-
+		let redirect = this.props.isUserAuthenticated 
+		? <Redirect to='training' />
+		: null;
+		// console.log(redirect);
 
 		return(
 			<div className="Login">
-				{/* {redirect} */}
+				{redirect}
 				{form}
 				{error}
 				<div>
@@ -164,7 +155,8 @@ const mapStateToProps = state => {
 	return {
 		userData: state.userData,
 		error: state.error,
-		loading: state.loading
+		loading: state.loading,
+		isUserAuthenticated: state.userData.userId !== null
 	}
 }
 

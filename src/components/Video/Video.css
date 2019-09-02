@@ -1,0 +1,44 @@
+.Video{
+    width: 410px;
+    margin: 80px auto;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 2px 3px #ccc;
+    border: 1px solid #eee;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.Video video{
+    width: 400px;
+}
+
+@media (min-width: 500px){
+    .Video {
+        width: 420px;
+    }
+
+    .Video video{
+        width: 400px;
+    }
+}
+
+@media (min-width: 700px){
+    .Video {
+        width: 620px;
+    }
+
+    .Video video{
+        width: 600px;
+    }
+}
+
+@media (min-width: 1000px){
+    .Video {
+        width: 920px;
+    }
+
+    .Video video{
+        width: 900px;
+    }
+}

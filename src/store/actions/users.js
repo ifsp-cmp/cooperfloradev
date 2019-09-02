@@ -25,13 +25,18 @@ export const loginFail = ( errorMessage ) => {
 export const logout = () => {
     firebase.auth().signOut()
     .then(function() {
-        console.log("Usuário signout");
+        // console.log("Usuário signout");
     })
     .catch(function(error) {
-        console.log("Erro no  signout");
+        // console.log("Erro no  signout");
     });
+    let userData = {};
+    userData.name = null;
+    userData.phone = null;
+    userData.userId = null;
     return {
-        type: actionsTypes.LOGOUT
+        type: actionsTypes.LOGOUT,
+        userData: userData
     };
 }
 
@@ -46,21 +51,21 @@ export const login = (email, password) => {
         dispatch(loginStart());
         firebase.auth().signInWithEmailAndPassword(email, password)
         .then(function( data ){
-            console.log("Usuário logado com sucesso");
-            console.log( data );
-            console.log(data.user.uid);
+            // console.log("Usuário logado com sucesso");
+            // console.log( data );
+            // console.log(data.user.uid);
             let docRef = firebase.firestore().collection("users").doc(data.user.uid);
             docRef.get()
             .then(function(doc) {
                 if (doc.exists) {
-                    console.log("Document data:", doc.data());
+                    // console.log("Document data:", doc.data());
                     let userData = doc.data();
-                    console.log(userData);
-                    userData.autheticated = true;
+                    userData.userId = data.user.uid;
+                    // console.log(userData);
                     dispatch(loginSuccess( userData ));
                 } else {
                     // doc.data() will be undefined in this case
-                    console.log("No such document!");
+                    // console.log("No such document!");
                 }
             })
             .catch(function(error) {
@@ -70,8 +75,8 @@ export const login = (email, password) => {
         .catch(function(error) {
             var errorCode = error.code;
             var errorMessage = error.message;
-            console.log(errorMessage);
-            console.log(errorCode);
+            // console.log(errorMessage);
+            // console.log(errorCode);
             dispatch(loginFail(errorMessage));
         });
     }
@@ -139,7 +144,6 @@ export const addUserStart = () => {
 
 export const addUser = ( userData ) => {
     return dispatch => {
-        // console.log("Cheguei no action adduser");
         dispatch(addUserStart());
         // console.log(userData);
         let userEmail = userData.email;
@@ -148,7 +152,7 @@ export const addUser = ( userData ) => {
         .then(function( res ){
             console.log("Retorno da criação do usuário:", res)
             // console.log(res.user.uid);
-            console.log("Usuário criado com sucesso");
+            // console.log("Usuário criado com sucesso");
             firebase.firestore().collection("users").doc(res.user.uid).set({
                 name: userData.name,
                 phone: userData.phone,
@@ -156,9 +160,9 @@ export const addUser = ( userData ) => {
                 timestamp: firebase.firestore.FieldValue.serverTimestamp()
             })
             .then(function(docRef) {
-                console.log("Dados armazenados com sucesso");
+                // console.log("Dados armazenados com sucesso");
                 userData.userId = res.user.uid;
-                //userData.token = "1111";
+                userData.password = null;
                 dispatch(addUserSuccess(userData));
             })
             .catch(function(error) {
@@ -184,7 +188,7 @@ export const listUsersFail =( error ) => {
 }
 
 export const getUsers = () =>{
-    console.log("Get Users from actions");
+    // console.log("Get Users from actions");
     let users = [];
     return dispatch => {
         firebase.firestore().collection("users").get()
@@ -198,7 +202,7 @@ export const getUsers = () =>{
             dispatch(listUser(users));
         })
         .catch(function(error){
-            console.log(error);
+            // console.log(error);
             dispatch(listUsersFail(error));
         });
     };

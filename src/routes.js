@@ -13,7 +13,7 @@ import Video from './components/Video/Video';
 import Training from './containers/Training/Training';
 
 
-const Routes = () => (
+const Routes = () => ( 
   <React.Fragment>
     <Route exact path="/" component={Home} />
     <Route exact path="/login" component={Login} />
@@ -21,7 +21,6 @@ const Routes = () => (
     <Route exact path="/listarusuarios" component={ListarUsuarios} />
     <Route exact path="/projeto" component={Projeto} />
     <Route exact path="/cooperflora" component={Cooperflora} />
-    <Route exact path="/video" component={Video} />
     <Route exact path="/logout" component={Logout} />
     <Route exact path="/esqueciminhasenha" component={ForgotPassword} />
     <Route exact path="/training" component={Training} />

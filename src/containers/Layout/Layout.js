@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux'; 
 // import Header from '../../components/Header/Header';
 // import Footer from '../../components/Footer/Footer';
 import Toolbar from '../../components/Navigation/Toolbar/Toolbar';
 import SideDrawer from '../../components/Navigation/SideDrawer/SideDrawer';
+import Footer from '../../components/Navigation/Footer/Footer';
 
 import './Layout.css';
 
@@ -24,19 +26,31 @@ class Layout extends Component{
   }
 
   render(){
+    console.log("[Layout component] ", this.props.isAuthenticated);
     return (
       <div className="Layout">
-        <Toolbar 
+        <Toolbar
+          isAuth={this.props.isAuthenticated} 
           clicked={this.sideDrawerClosedHandler}
           drawerToggleClicked={this.sideDrawerToggleHandler}
         />
-        <SideDrawer closed={this.sideDrawerClosedHandler} open={this.state.showSideDrawer}/>
+        <SideDrawer 
+          isAuth={this.props.isAuthenticated} 
+          closed={this.sideDrawerClosedHandler} open={this.state.showSideDrawer}
+        />
         <main className="Content">
           {this.props.children}
         </main>
+        <Footer />
       </div>
     );
   }
 };
 
-export default Layout;
+const mapStateToProps = state => {
+  return {
+    isAuthenticated: state.userData.userId !== null 
+  }
+}
+
+export default connect(mapStateToProps)(Layout);

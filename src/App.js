@@ -1,8 +1,9 @@
 import React, { PureComponent } from 'react';
-import { BrowserRouter as Router, Switch } from 'react-router-dom';
+import { Switch, withRouter } from 'react-router-dom';
 // import { connect } from 'react-redux';
 import Routes from './routes';
 import Layout from './containers/Layout/Layout';
+
 // import * as actions from './store/actions/index';
 
 // import Login from './components/Login/Login';
@@ -16,11 +17,9 @@ class App extends PureComponent {
   render() {
     return ( 
       <Layout>
-        <Router>
           <Switch>
             <Routes />
           </Switch>
-        </Router>
       </Layout>
     );
   }
@@ -33,4 +32,4 @@ class App extends PureComponent {
 // }
 
 // export default connect(null, mapDispatchToProps)(App);
-export default App;
+export default withRouter(App);

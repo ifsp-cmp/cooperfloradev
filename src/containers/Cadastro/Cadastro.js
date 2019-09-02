@@ -133,7 +133,7 @@ class Cadastro extends Component{
 		// console.log(formElementArray);
 		
 		//Redireciona caso o usuário tenha sido cadastrado. 
-		let redirect = this.props.userData.token ? <Redirect to='/video' /> : null;
+		let redirect = this.props.isUserAuthenticated ? <Redirect to='/video' /> : null;
 
 		let form = null;
 		form = (
@@ -176,6 +176,7 @@ const mapStateToProps = state => {
 	return {
 		userData: state.userData,
 		loading: state.loading,
+		isUserAuthenticated: state.isUserAuthenticated,
 		error: state.error
 	};
 }
