@@ -1,5 +1,6 @@
-import React from 'react';
-import { Route } from 'react-router-dom';
+import React, { Component } from 'react';
+import { Route, Switch, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 import Home from './components/Home/Home';
 import Login from './containers/Login/Login';
@@ -9,22 +10,52 @@ import ForgotPassword from './containers/Login/ForgotPassword';
 import ListarUsuarios from './containers/ListarUsuarios/ListarUsuarios';
 import Projeto from './components/Projeto/Projeto';
 import Cooperflora from './components/Cooperflora/Cooperflora';
-import Video from './components/Video/Video';
 import Training from './containers/Training/Training';
+import { statement } from '@babel/template';
 
 
-const Routes = () => ( 
-  <React.Fragment>
-    <Route exact path="/" component={Home} />
-    <Route exact path="/login" component={Login} />
-    <Route exact path="/cadastro" component={Cadastro} />
-    <Route exact path="/listarusuarios" component={ListarUsuarios} />
-    <Route exact path="/projeto" component={Projeto} />
-    <Route exact path="/cooperflora" component={Cooperflora} />
-    <Route exact path="/logout" component={Logout} />
-    <Route exact path="/esqueciminhasenha" component={ForgotPassword} />
-    <Route exact path="/training" component={Training} />
-  </React.Fragment>
-);
+class Routes extends Component{ 
+  
+  render(){
+    let routes = (
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route exact path="/login" component={Login} />
+        <Route exact path="/cadastro" component={Cadastro} />
+        <Route exact path="/projeto" component={Projeto} />
+        <Route exact path="/cooperflora" component={Cooperflora} />
+        <Route exact path="/esqueciminhasenha" component={ForgotPassword} />
+        <Redirect to='/' />
+      </Switch>
+    );
 
-export default Routes;
+    if(this.props.isAuthenticated){
+      routes = (
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/cadastro" component={Cadastro} />
+          <Route exact path="/projeto" component={Projeto} />
+          <Route exact path="/cooperflora" component={Cooperflora} />
+          <Route exact path="/listarusuarios" component={ListarUsuarios} />
+          <Route exact path="/logout" component={Logout} />
+          <Route exact path="/training" component={Training} />
+          <Redirect to='/' />
+        </Switch>
+      );
+    }
+
+    return(
+      <React.Fragment>
+          {routes}
+      </React.Fragment>
+    );
+  }
+}
+const mapStateToProps = state =>{
+  return{
+    isAuthenticated: state.userData.userId !== null
+  }
+}    
+export default connect(mapStateToProps)(Routes);
+    

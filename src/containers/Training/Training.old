@@ -1,0 +1,66 @@
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import Video from '../../components/Video/Video';
+import './Training.css';
+
+import * as userActions from '../../store/actions/index';
+
+class Training extends Component{
+    
+    // componentDidMount(){
+    recordTime(){
+		let tempo = setInterval(
+			function() { 
+				let vid = document.getElementById("myVideo");
+				if(vid){
+					console.log(vid);
+                    console.log(vid.currentTime);
+                    // this.props.recordCurrentTime(vid.currentTime);
+                    if(this.props.recordCurrentTime){
+                        console.log(this.props.recordCurrentTime); 
+                    } 
+				} else {
+					clearInterval(tempo);
+				}
+            }, 1000
+		);
+	}
+
+    render(){
+        // let tempo = setInterval(
+		// 	function() { 
+		// 		let vid = document.getElementById("myVideo");
+		// 		if(vid){
+		// 			console.log(vid);
+        //             console.log(vid.currentTime);
+        //             this.props.recordCurrentTime(vid.currentTime);
+		// 		} else {
+		// 			clearInterval(tempo);
+		// 		}
+        //     }, 1000
+		// );
+        return (
+            <div className="Training">
+                <Video />
+                <button className="Button" onClick={this.recordTime}>Enviar</button>
+            </div>
+        );
+    };
+}
+
+const mapStateToProps = state => {
+	return {
+		userData: state.userData,
+		error: state.error,
+		loading: state.loading,
+		isUserAuthenticated: state.userData.userId !== null
+	}
+}
+
+const mapDispatchToProps = dispatch => {
+	return{
+        recordCurrentTime: (time) => dispatch(userActions.recordCurrentTime(time))
+	}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Training); 

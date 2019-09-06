@@ -4,5 +4,10 @@ export{
 	getUsers,
 	login,
 	logout,
-	forgotPassword
+	forgotPassword,
+	verifyLogin
 } from './users.js'
+
+export{
+	recordCurrentTime
+} from './video.js'

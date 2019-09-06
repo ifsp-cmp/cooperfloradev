@@ -25,10 +25,10 @@ export const loginFail = ( errorMessage ) => {
 export const logout = () => {
     firebase.auth().signOut()
     .then(function() {
-        // console.log("Usuário signout");
+        console.log("Usuário signout");
     })
     .catch(function(error) {
-        // console.log("Erro no  signout");
+        console.log("Erro no  signout");
     });
     let userData = {};
     userData.name = null;
@@ -78,6 +78,41 @@ export const login = (email, password) => {
             // console.log(errorMessage);
             // console.log(errorCode);
             dispatch(loginFail(errorMessage));
+        });
+    }
+}
+
+export const verifyLogin = () => {
+    return dispatch => {
+        let userData = {};
+        console.log('[Verify login]');
+        dispatch(loginStart());
+        firebase.auth().onAuthStateChanged(user => {
+            // console.log('[App Component] UID ', user.uid);         
+            // console.log('[App Component] Email ', user.email);
+            if(user){
+                console.log('[Users Store]',user.uid);
+                let docRef = firebase.firestore().collection("users").doc(user.uid);
+                docRef.get()
+                .then(function(doc) {
+                    if (doc.exists) {
+                        // console.log("Document data:", doc.data());
+                        let userData = doc.data();
+                        userData.userId = user.uid;
+                        // console.log(userData);
+                        dispatch(loginSuccess( userData ));
+                    } else {
+                        // doc.data() will be undefined in this case
+                        // console.log("No such document!");
+                    }
+                })
+                .catch(function(error) {
+                    console.log("Error getting document:", error);
+                });
+                
+            } else {
+                dispatch(logout());
+            }
         });
     }
 }

@@ -7,8 +7,9 @@ const initialState = {
     phone: null,
     email: null,
     password: null,
-    token: null,
-    userId: null
+    userId: null,
+    timeVideo: 0,
+    whatchedVideo: false
   },
   users: null,
   error: false,
@@ -56,7 +57,8 @@ const reducer = (state = initialState, action) => {
     case actionTypes.LOGOUT:
       return {
         ...state,
-        userData: action.userData
+        userData: action.userData,
+        loading: false
       }
     case actionTypes.FORGOT_PASSWORD_START:
       return {
