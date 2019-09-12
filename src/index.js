@@ -8,7 +8,7 @@ import thunk from 'redux-thunk'; //Para fazer comunicação assincrona
 
 import './index.css';
 import App from './App';
-import firebaseSetup from './firebaseSetup';
+import firebaseSetup from './.firebaseSetup';
 import * as serviceWorker from './serviceWorker';
 import reducer from './store/reducers/reducer';
 
