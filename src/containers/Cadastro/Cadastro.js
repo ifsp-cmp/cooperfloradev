@@ -5,8 +5,7 @@ import * as userActions from '../../store/actions/index';
 import Spinner from '../../components/UI/Spinner/Spinner2';
 
 import './Cadastro.css';
-// import fotoCapa from '../../assets/images/home.png';
-//import Usuario from './usuario.jpg';
+import { checkValidity } from '../../shared/utility';
 
 class Cadastro extends Component{
 	
@@ -70,26 +69,6 @@ class Cadastro extends Component{
 		formIsValid: false,
 	}
 
-	checkValidity(value, rules) {
-	    let isValid = true;
-	    if (!rules) {
-	      return true;
-	    }
-
-	    if (rules.required) {
-	      isValid = value.trim() !== '' && isValid;
-	    }
-
-	    if (rules.minLength) {
-	      isValid = value.length >= rules.minLength && isValid
-	    }
-
-	    if (rules.maxLength) {
-	      isValid = value.length <= rules.maxLength && isValid
-	  	}
-	  	return isValid;
-    }
-
 	inputChangedHandler(event, inputIdentifier) {
 		const updatedLoginForm = {
 			...this.state.loginForm
@@ -98,7 +77,7 @@ class Cadastro extends Component{
 			...updatedLoginForm[inputIdentifier]
 		};
 		updatedFormElement.value = event.target.value;
-		updatedFormElement.valid = this.checkValidity(event.target.value, updatedFormElement.validation);
+		updatedFormElement.valid = checkValidity(event.target.value, updatedFormElement.validation);
 		updatedFormElement.touched = true;
 		updatedLoginForm[inputIdentifier] = updatedFormElement;
 
@@ -123,6 +102,9 @@ class Cadastro extends Component{
 	}
 	
 	render(){
+
+		console.log('[Cadastro] UserData:', this.props.userData);
+
 		const formElementArray = [];
 		for (let key in this.state.loginForm){
 			formElementArray.push({

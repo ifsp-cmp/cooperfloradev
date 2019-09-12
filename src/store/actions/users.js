@@ -34,6 +34,7 @@ export const logout = () => {
     userData.name = null;
     userData.phone = null;
     userData.userId = null;
+    userData.videoTime = 0;
     return {
         type: actionsTypes.LOGOUT,
         userData: userData
@@ -73,8 +74,8 @@ export const login = (email, password) => {
             });
         })
         .catch(function(error) {
-            var errorCode = error.code;
-            var errorMessage = error.message;
+            //var errorCode = error.code;
+            let errorMessage = error.message;
             // console.log(errorMessage);
             // console.log(errorCode);
             dispatch(loginFail(errorMessage));
@@ -84,8 +85,7 @@ export const login = (email, password) => {
 
 export const verifyLogin = () => {
     return dispatch => {
-        let userData = {};
-        console.log('[Verify login]');
+        // console.log('[Verify login]');
         dispatch(loginStart());
         firebase.auth().onAuthStateChanged(user => {
             // console.log('[App Component] UID ', user.uid);         
@@ -110,7 +110,8 @@ export const verifyLogin = () => {
                     console.log("Error getting document:", error);
                 });
                 
-            } else {
+            } 
+            else {
                 dispatch(logout());
             }
         });
@@ -179,6 +180,7 @@ export const addUserStart = () => {
 
 export const addUser = ( userData ) => {
     return dispatch => {
+        console.log('[Adduser] UserData:', userData);
         dispatch(addUserStart());
         // console.log(userData);
         let userEmail = userData.email;
@@ -192,17 +194,18 @@ export const addUser = ( userData ) => {
                 name: userData.name,
                 phone: userData.phone,
                 email: userData.email,
+                videoTime: 0,
                 timestamp: firebase.firestore.FieldValue.serverTimestamp()
             })
             .then(function(docRef) {
                 // console.log("Dados armazenados com sucesso");
                 userData.userId = res.user.uid;
-                userData.password = null;
+                userData.videoTime = 0;
                 dispatch(addUserSuccess(userData));
             })
             .catch(function(error) {
                 console.error("Erro ao incluir o usuário: ", error);
-                dispatch(addUserFail(error));
+                dispatch(addUserFail(error)); 
             });
         })
         .catch(function(error) {

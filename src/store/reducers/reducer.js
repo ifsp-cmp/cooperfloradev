@@ -8,7 +8,7 @@ const initialState = {
     email: null,
     password: null,
     userId: null,
-    timeVideo: 0,
+    videoTime: 0,
     whatchedVideo: false
   },
   users: null,

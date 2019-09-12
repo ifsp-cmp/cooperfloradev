@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import Spinner from '../../components/UI/Spinner/Spinner2';
-import firebase from 'firebase';
 
 import "./Login.css";
 import * as userActions from '../../store/actions/index';
+import { checkValidity } from '../../shared/utility';
 
 class Login extends Component{ 
 
@@ -44,26 +44,6 @@ class Login extends Component{
 		loading: false
 	}
 
-	checkValidity(value, rules) {
-	    let isValid = true;
-	    if (!rules) {
-	      return true;
-	    }
-
-	    if (rules.required) {
-	      isValid = value.trim() !== '' && isValid;
-	    }
-
-	    if (rules.minLength) {
-	      isValid = value.length >= rules.minLength && isValid
-	    }
-
-	    if (rules.maxLength) {
-	      isValid = value.length <= rules.maxLength && isValid
-	  	}
-	  	return isValid;
-    }
-
 	inputChangedHandler(event, inputIdentifier) {
 		const updatedLoginForm = {
 			...this.state.loginForm
@@ -72,7 +52,7 @@ class Login extends Component{
 			...updatedLoginForm[inputIdentifier]
 		};
 		updatedFormElement.value = event.target.value;
-		updatedFormElement.valid = this.checkValidity(event.target.value, updatedFormElement.validation);
+		updatedFormElement.valid = checkValidity(event.target.value, updatedFormElement.validation);
 		updatedFormElement.touched = true;
 		updatedLoginForm[inputIdentifier] = updatedFormElement;
 
@@ -137,7 +117,7 @@ class Login extends Component{
 		? <Redirect to='training' />
 		: null;
 		// console.log(redirect);
-
+		console.log('[Component Login]');
 		return(
 			<div className="Login">
 				{redirect}

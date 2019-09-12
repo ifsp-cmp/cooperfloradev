@@ -11,8 +11,6 @@ import ListarUsuarios from './containers/ListarUsuarios/ListarUsuarios';
 import Projeto from './components/Projeto/Projeto';
 import Cooperflora from './components/Cooperflora/Cooperflora';
 import Training from './containers/Training/Training';
-import { statement } from '@babel/template';
-
 
 class Routes extends Component{ 
   

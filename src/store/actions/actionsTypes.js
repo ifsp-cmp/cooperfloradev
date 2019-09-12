@@ -14,4 +14,6 @@ export const ADD_USER_FAIL = 'ADD_USER_FAIL';
 
 export const REMOVE_USER = 'REMOVE_USER';
 export const LIST_USERS = 'LIST_USERS';
-export const LIST_USERS_FAIL = "LIST_USERS_FAIL";
+export const LIST_USERS_FAIL = 'LIST_USERS_FAIL';
+
+export const UPDATE_VIDEO_TIME = 'UPDATE_VIDEO_TIME';

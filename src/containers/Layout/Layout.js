@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'; 
-import firebase from 'firebase';
-// import Header from '../../components/Header/Header';
-// import Footer from '../../components/Footer/Footer';
 import Toolbar from '../../components/Navigation/Toolbar/Toolbar';
 import SideDrawer from '../../components/Navigation/SideDrawer/SideDrawer';
 import Footer from '../../components/Navigation/Footer/Footer';
@@ -28,6 +25,7 @@ class Layout extends Component{
 
   render(){
     // console.log("[Layout component] ", this.props.isAuthenticated);
+    // console.log("Env. Variable", process.env.NODE_ENV);
     return (
       <div className="Layout">
         <Toolbar

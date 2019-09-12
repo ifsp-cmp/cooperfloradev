@@ -1,6 +1,5 @@
 import React, { PureComponent } from 'react';
 import { withRouter } from 'react-router-dom';
-import firebase from 'firebase';
 import { connect } from 'react-redux';
 import Routes from './routes';
 import Layout from './containers/Layout/Layout';
