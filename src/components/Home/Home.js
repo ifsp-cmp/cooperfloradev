@@ -23,22 +23,29 @@ const home = () => {
 			<div className="Home">
 				<div className="Titulo">
 					<p>Bem vindo, bem vinda ao site de formação da Cooperativa Cooperflora</p>
-					<p>Como funciona</p>
 				</div>
+				<p className="ComoFunciona">Como funciona</p>
 				<div className="Tutorial">
-					<div className="Box">
-						<p>Você se cadastra no site.</p>
-					</div>
-					<div className="Box">
-						<p>Assiste o vídeo da Cooperativa Cooperflora.</p>
-					</div>
-					<div className="Box">
-						<p>A Cooperativa recebe um e-mail dizendo que você já está habilitado a fazer parte de um grupo de consumo.</p>
-					</div>
-					<div className="Box">
-						<p>A Cooperativa entra em contato com você.</p>
-					</div>
-
+					{/* <div class="container"> */}
+						{/* <div class="row"> */}
+							{/* <div className="Box col-md-3"> */}
+							<div className="Box">
+								<p>1. Você se cadastra no site.</p>
+							</div>
+							{/* <div className="Box col-md-3"> */}
+							<div className="Box">
+								<p>2. Assiste o vídeo da Cooperativa Cooperflora.</p>
+							</div>
+							{/* <div className="Box col-md-3"> */}
+							<div className="Box">
+								<p>3. A Cooperativa recebe um e-mail dizendo que você já está habilitado a fazer parte de um grupo de consumo.</p>
+							</div>
+							{/* <div className="Box col-md-3"> */}
+							<div className="Box">
+								<p>4. A Cooperativa entra em contato com você.</p>
+							</div>
+						{/* </div> */}
+					{/* </div> */}
 				</div>
 			</div>
 

@@ -11,11 +11,36 @@
     position: fixed;
     display: flex;
     /* justify-content: space-between; */
-    align-items: center;
-    padding: 0 20px;
+    /* align-items: center; */
+    padding: 10px 20px;
     /* box-sizing: border-box; */
     
     z-index: 90;
+}
+
+.Bloco1{
+    width: 33%;
+}
+
+.Bloco2{
+    width: 33%;
+}
+
+.Bloco3{
+    width: 33%;
+    display: inline-block;
+}
+
+.FacebookLogo{
+    width: 50px;
+}
+
+.EmailLogo{
+    width: 50px;
+}
+
+.IfspLogo{
+    width: 80px;
 }
 
 @media (min-width: 600px){
