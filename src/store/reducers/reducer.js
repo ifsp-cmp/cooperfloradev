@@ -9,7 +9,7 @@ const initialState = {
     password: null,
     userId: null,
     videoTime: 0,
-    whatchedVideo: false
+    whatchedVideo: false,
   },
   users: null,
   error: false,

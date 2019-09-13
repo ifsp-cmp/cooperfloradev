@@ -103,7 +103,7 @@ class Cadastro extends Component{
 	
 	render(){
 
-		console.log('[Cadastro] UserData:', this.props.userData);
+		// console.log('[Cadastro] UserData:', this.props.userData);
 
 		const formElementArray = [];
 		for (let key in this.state.loginForm){
@@ -115,12 +115,12 @@ class Cadastro extends Component{
 		// console.log(formElementArray);
 		
 		//Redireciona caso o usuário tenha sido cadastrado. 
-		let redirect = this.props.isUserAuthenticated ? <Redirect to='/video' /> : null;
+		let redirect = this.props.isUserAuthenticated ? <Redirect to='/training' /> : null;
+		console.log('[Cadastro Component] isUserAuthenticated:', this.props.isUserAuthenticated)
 
 		let form = null;
 		form = (
 			<div>
-				{redirect}
 				<form onSubmit={this.submitHandler}>
 					{formElementArray.map(formElement => {
 						let inputClass = ["Input"];
@@ -148,6 +148,7 @@ class Cadastro extends Component{
 
 		return(
 			<div className="Cadastro">
+				{redirect}
 				{form}
 			</div>
 		);
@@ -158,7 +159,7 @@ const mapStateToProps = state => {
 	return {
 		userData: state.userData,
 		loading: state.loading,
-		isUserAuthenticated: state.isUserAuthenticated,
+		isUserAuthenticated: state.userData.userId !== null,
 		error: state.error
 	};
 }

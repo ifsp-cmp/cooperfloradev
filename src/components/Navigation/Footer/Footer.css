@@ -27,16 +27,18 @@
 }
 
 .Bloco3{
-    width: 33%;
-    display: inline-block;
+    display: flex;
+    margin: 5px auto;
 }
 
 .FacebookLogo{
     width: 50px;
+    padding: 5px;
 }
 
 .EmailLogo{
     width: 50px;
+    padding: 5px;
 }
 
 .IfspLogo{

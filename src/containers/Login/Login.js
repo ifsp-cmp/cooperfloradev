@@ -117,7 +117,7 @@ class Login extends Component{
 		? <Redirect to='training' />
 		: null;
 		// console.log(redirect);
-		console.log('[Component Login]');
+		// console.log('[Component Login]');
 		return(
 			<div className="Login">
 				{redirect}
