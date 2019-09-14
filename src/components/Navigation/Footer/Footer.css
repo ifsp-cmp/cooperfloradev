@@ -1,34 +1,29 @@
 .Footer {
-    /* background-color: #006600; */
     background-color: rgb(119, 3, 3);
-    height: 200px;
     width: 100%;
-    text-align: center;
     color: white;
-    font-size: 20px;
-    /* bottom: 0;
-    left: 0; */
-    position: fixed;
-    display: flex;
-    /* justify-content: space-between; */
-    /* align-items: center; */
-    padding: 10px 20px;
-    /* box-sizing: border-box; */
-    
     z-index: 90;
 }
 
-.Bloco1{
-    width: 33%;
+.Footer .Bloco{
+    width: 100%;
+    height: 200px;
+    font-size: 1.1em;
+    text-align: center;
+    /* border: 2px solid white; */
+    /* border-right: 1px solid rgb(0,0,0, 0.7); */
+
 }
 
-.Bloco2{
-    width: 33%;
+
+.IfspLogo{
+    width: 70px;
+    padding: 5px;
 }
 
-.Bloco3{
-    display: flex;
-    margin: 5px auto;
+.NeaesLogo{
+    width: 70px;
+    padding: 5px;
 }
 
 .FacebookLogo{
@@ -41,13 +36,20 @@
     padding: 5px;
 }
 
-.IfspLogo{
-    width: 80px;
-}
-
 @media (min-width: 600px){
     .Footer {
         bottom: 0;
         left: 0;
+        position: fixed;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .Footer .Bloco{
+        width: 33%;
     }
 }
+
+
+
+

@@ -9,9 +9,9 @@ const navigationItems = (props) => (
         <NavigationItem link='/' active>Home</NavigationItem>
         <NavigationItem link='/cooperflora'>Cooperflora</NavigationItem>
         <NavigationItem link='/projeto'>O projeto</NavigationItem>
-        { props.isAuthenticated ?
+        {/* { props.isAuthenticated ?
             <NavigationItem link='/listarusuarios'>Listar</NavigationItem> : null
-        }
+        } */}
         { props.isAuthenticated ?
             <NavigationItem link='/training'>Formação</NavigationItem> : null
         }

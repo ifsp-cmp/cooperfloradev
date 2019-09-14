@@ -5,24 +5,28 @@ import logoFacebook from '../../../assets/images/logofacebook.png';
 import logoEmail from '../../../assets/images/logoemail.png';
 import license from '../../../assets/images/license.png';
 import logoIfspCampinas from '../../../assets/images/logoifspcampinas.png';
+import logoNeaes from '../../../assets/images/logoneaes.png';
 
 const footer = () => {
     return (
         <footer className="Footer">
-            <div className="Bloco1">
-                <p>Realização NEAES</p>
-                <a href='http://www.cmp.ifsp.edu.br' >
-                    <img className="IfspLogo" src={logoIfspCampinas} alt='Logo do IFSP Campinas'/>
-                </a>
+            <div className="Bloco">
+                <p><strong>Realização</strong></p>
+                <div class="Itens">
+                    <a href="#">
+                    <img className="NeaesLogo" src={logoNeaes} alt='Logo do NEAES'/>
+                    </a>
+                    <a href='http://www.cmp.ifsp.edu.br' >
+                        <img className="IfspLogo" src={logoIfspCampinas} alt='Logo do IFSP Campinas'/>
+                    </a>
+                </div>
             </div>
-            <div className="Bloco2">
-                <p>Cooperativa Cooperflora</p>
-                 <img src={license} alt='Logo do Instituto Federal de São Paulo Campus Campinas'/>
-                {/* <Link to="https://github.com/Joeyryanbridges">
-                    <img src="giticon.png" className="githubIcon" />
-                </Link> */}
+            <div className="Bloco">
+                <p><strong>Cooperativa Cooperflora</strong></p>
+                 <img src={license} alt='Tipo de Licenciamento.'/>
             </div>
-            <div className="Bloco3">
+            <div className="Bloco">
+                <p><strong>Contato</strong></p>
                 <a href='https://www.facebook.com/Cooperflora1/' target="_blank" rel="noopener noreferrer">
                     <img className="FacebookLogo" src={logoFacebook} alt='Logo do Facebook'/>
                 </a>

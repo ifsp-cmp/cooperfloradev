@@ -35,7 +35,7 @@ class Routes extends Component{
           <Route exact path="/cadastro" component={Cadastro} />
           <Route exact path="/projeto" component={Projeto} />
           <Route exact path="/cooperflora" component={Cooperflora} />
-          <Route exact path="/listarusuarios" component={ListarUsuarios} />
+          {/* <Route exact path="/listarusuarios" component={ListarUsuarios} /> */}
           <Route exact path="/logout" component={Logout} />
           <Route exact path="/training" component={Training} />
           <Redirect to='/' />

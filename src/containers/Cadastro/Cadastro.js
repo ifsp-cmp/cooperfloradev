@@ -148,6 +148,8 @@ class Cadastro extends Component{
 
 		return(
 			<div className="Cadastro">
+				<p>Cadastro</p>
+				<p>Todos os campos são obrigatórios</p>
 				{redirect}
 				{form}
 			</div>
