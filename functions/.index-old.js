@@ -75,6 +75,3 @@ exports.firestoreEmail = () => {
 
 
 //Email template id: fcc6a21e08e04d918bd5814b50a7e22b
-
-//Sendgrid Key=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
-
