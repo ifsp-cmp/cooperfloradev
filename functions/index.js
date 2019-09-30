@@ -1,3 +1,5 @@
+//Poss[íveis problemas https://stackoverflow.com/questions/19877246/nodemailer-with-gmail-and-nodejs
+
 const nodemailer = require('nodemailer');
 const smtpTransport = require('nodemailer-smtp-transport');
 const functions = require('firebase-functions');
@@ -57,49 +59,41 @@ exports.emailMessage1 = functions.firestore
     return db.collection('users').doc('GXOw2sRCqXNeR0qr3ZOb')
     .get()
     .then(doc => {
-        const user = doc.data();
-        return db.collection('users').doc('GXOw2sRCqXNeR0qr3ZOb')
-        .get()
-        .then(doc => {
-            const user = doc.data();
-            
-            var text = user;
-            var sesAccessKey = 'contatocooperflora@gmail.com';
-            var sesSecretKey = 'AgroecologiaAMS';
-            
-            console.log("email:", sesAccessKey);
-            
-            var transporter = nodemailer.createTransport(smtpTransport({
-                service: 'gmail',
-                auth: {
-                    user: sesAccessKey,
-                    pass: sesSecretKey
-                }
-            }));
-            const mailOptions = {
-                to: "albordignon@gmail.com",
-                from: "contatocooperflora@gmail.com",
-                subject: 'sent you a new message',
-                text: text,
-                html: text
-            };
-            console.log("[Function] Antes de chamar sendMail");
-            transporter.sendMail(mailOptions, function(error, info){
-                console.log("Fim da função");
-                if(error){
-                    console.log(error.message);
-                }
-                console.log("Fim da função");
-                console.log("mensagem enviada");
-                res.status(200).send({          
-                    message: "success"
-                })
-            });
-        })
-        .then(() => console.log('Message sent.'))
-        .catch(err => console.log('Erro', err));
-    });
+        var sesAccessKey = 'contatocooperflora@gmail.com';
+        var sesSecretKey = 'AgroecologiaAMS';
+        console.log("email:", sesAccessKey);
+        var transporter = nodemailer.createTransport(smtpTransport({
+            service: 'gmail',
+            auth: {
+                user: sesAccessKey,
+                pass: sesSecretKey
+            }
+        }));
+        const mailOptions = {
+            to: "albordignon@gmail.com",
+            from: "contatocooperflora@gmail.com",
+            subject: 'sent you a new message',
+            text: "Email from create user",
+            html: "Email from create user"
+        };
+        console.log("[Function] Antes de chamar sendMail");
+        transporter.sendMail(mailOptions, function(error, info){
+            console.log("Fim da função");
+            console.log("Mensagem de erro -> ", error);
+            console.log("Mensagem de info -> ", info);
+            if(error){
+                console.log(error.message);
+            }
+            console.log("Fim da função");
+            console.log("mensagem enviada");
+            res.status(200).send({          
+                message: "success"
+            })
+        });
+    })
+    .catch(err => console.log('Erro', err));
 });
+
 
 exports.emailViaForm = functions.https.onRequest((req, res) => {
     console.log("Inicio da Função");
@@ -155,3 +149,61 @@ exports.emailViaForm = functions.https.onRequest((req, res) => {
         });
     });
 });
+
+
+// exports.emailMessage1 = functions.firestore
+// .document('users/{userId}')
+// .onCreate(event => {
+//     console.log("Iniciando a função.");
+//     //const userId = event.params.userId;
+//     // console.log(event.params);
+//     console.log(event);
+//     const db=admin.firestore();
+//     return db.collection('users').doc('GXOw2sRCqXNeR0qr3ZOb')
+//     .get()
+//     .then(doc => {
+//         // const user = doc.data();
+//         return db.collection('users').doc('GXOw2sRCqXNeR0qr3ZOb')
+//         .get()
+//         .then(doc => {
+//             const user = doc.data();
+
+//             var text = user;
+//             var sesAccessKey = 'contatocooperflora@gmail.com';
+//             var sesSecretKey = 'AgroecologiaAMS';
+
+//             console.log("email:", sesAccessKey);
+
+//             var transporter = nodemailer.createTransport(smtpTransport({
+//                 service: 'gmail',
+//                 auth: {
+//                     user: sesAccessKey,
+//                     pass: sesSecretKey
+//                 }
+//             }));
+//             const mailOptions = {
+//                 to: "albordignon@gmail.com",
+//                 from: "contatocooperflora@gmail.com",
+//                 subject: 'sent you a new message',
+//                 text: "Email from create user",
+//                 html: "Email from create user"
+//             };
+//             console.log("[Function] Antes de chamar sendMail");
+//             transporter.sendMail(mailOptions, function(error, info){
+//                 console.log("Fim da função");
+//                 console.log("Mensagem de erro -> ", error);
+//                 console.log("Mensagem de info -> ", info);
+//                 if(error){
+//                     console.log(error.message);
+//                 }
+//                 console.log("Fim da função");
+//                 console.log("mensagem enviada");
+//                 res.status(200).send({          
+//                     message: "success"
+//                 })
+//             });
+//         })
+//         .then(() => console.log('Message sent.'))
+//         .catch(err => console.log('Erro', err));
+//     });
+// });
