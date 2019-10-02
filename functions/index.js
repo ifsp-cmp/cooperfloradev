@@ -48,17 +48,17 @@ exports.addMessage = functions.https.onRequest(async (req, res) => {
 //     .catch(err => console.log('Erro', err))
 // });
 
-exports.emailMessage1 = functions.firestore
+exports.enviaEmailCriacaoUsuario = functions.firestore
 .document('users/{userId}')
-.onCreate(event => {
+.onCreate((event, dados) => {
     console.log("Iniciando a função.");
-    //const userId = event.params.userId;
-    // console.log(event.params);
-    console.log(event);
+    const userId = dados.params.userId;
     const db=admin.firestore();
-    return db.collection('users').doc('GXOw2sRCqXNeR0qr3ZOb')
+    return db.collection('users').doc(userId)
     .get()
     .then(doc => {
+        let userData = doc.data();
+        console.log(userData);
         var sesAccessKey = 'contatocooperflora@gmail.com';
         var sesSecretKey = 'AgroecologiaAMS';
         console.log("email:", sesAccessKey);
@@ -69,12 +69,31 @@ exports.emailMessage1 = functions.firestore
                 pass: sesSecretKey
             }
         }));
+        let message = 'Um novo usuário foi incluído no banco de dados.';
+        
+        var text = `<div>
+        <h4>Dados do consumidor</h4>
+        <ul>
+        <li>
+        Name - ${userData.name || ""}
+        </li>
+        <li>
+        Email - ${userData.email || ""}
+        </li>
+        <li>
+        Phone - ${userData.phone || ""}
+        </li>
+        </ul>
+        <h4>Mensagem</h4>
+        <p>${message || ""}</p>
+        </div>`;
+        
         const mailOptions = {
             to: "albordignon@gmail.com",
             from: "contatocooperflora@gmail.com",
-            subject: 'sent you a new message',
-            text: "Email from create user",
-            html: "Email from create user"
+            subject: 'Um novo usuário foi cadastrado no banco de dados da Cooperflora',
+            text: text,
+            html: text
         };
         console.log("[Function] Antes de chamar sendMail");
         transporter.sendMail(mailOptions, function(error, info){
