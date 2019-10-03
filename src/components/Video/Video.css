@@ -33,6 +33,16 @@
     }
 }
 
+@media (min-width: 900px){
+    .Video {
+        width: 820px;
+    }
+
+    .Video video{
+        width: 600px;
+    }
+}
+
 @media (min-width: 1000px){
     .Video {
         width: 920px;

@@ -2,6 +2,7 @@
 	top: 0;
 	left: 0;
 	margin-top: 80px;
+	margin-bottom: 300px;
 	z-index: 10;
 	width: 100%;
 	/* background-color: grey; */
@@ -82,12 +83,13 @@
 	width: 70px;
 }
 
-/* body {
-	background: url(http://flickholdr.com/1600/1200/sunset) no-repeat center top fixed;
-	
-	-webkit-background-size: cover;
-	-moz-background-size: cover;
-	-o-background-size: cover;
-	background-size: cover;
-} */
+@media (min-width: 600px){
+    .ComoFunciona {
+        margin-top: 50px;
+    }
+
+    .Titulo{
+        margin-top: 150px;
+    }
+}
 

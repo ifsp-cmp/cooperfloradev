@@ -13,7 +13,7 @@ const footer = () => {
             <div className="Bloco">
                 <p><strong>Realização</strong></p>
                 <div class="Itens">
-                    <a href="#">
+                    <a href="https://cmp.ifsp.edu.br/index.php/extensao-categoria-menu-2/2-uncategorised/221-neaes">
                     <img className="NeaesLogo" src={logoNeaes} alt='Logo do NEAES'/>
                     </a>
                     <a href='http://www.cmp.ifsp.edu.br' >

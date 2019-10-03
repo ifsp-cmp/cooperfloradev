@@ -1,3 +1,48 @@
 .Cooperflora{
+    width: 100%;
     margin-top: 80px;
+}
+
+.Cooperflora .Apresentacao{
+    text-align: justify;
+    margin: 15px;
+}
+
+.Cartoes{
+    padding: 10px 50px;
+    /* display: flex;
+    justify-content: space-between; */
+    text-align: center;
+}
+
+.Cartoes .BordaCartao{
+    border: 1px solid rgba(0,0,0,0.125);
+    box-shadow: #000 2px 2px 1px;
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+.Cartoes .TextoCartao{
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+    /* padding: 20px; */
+}
+
+@media (min-width: 600px){
+    .Cooperflora {
+        margin-bottom: 200px;
+    }
+
+    .Cartoes{
+        padding: 10px 50px;
+        display: flex;
+        justify-content: space-between;
+        text-align: center;
+    }
+
+    .Cartao{
+        width: 30%;
+    }
 }

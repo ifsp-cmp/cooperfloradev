@@ -39,22 +39,22 @@ const home = () => {
 						{/* <div class="row"> */}
 							{/* <div className="Box col-md-3"> */}
 							<div className="Box">
-								<img className="Icone" src={cadastro} />
+								<img className="Icone" src={cadastro} alt='Ìcone de cadastro.'/>
 								<p>Você se cadastra no site.</p>
 							</div>
 							{/* <div className="Box col-md-3"> */}
 							<div className="Box">
-								<img className="Icone" src={video} />
+								<img className="Icone" src={video}  alt='Ìcone de vídeo.'/>
 								<p>Assiste o vídeo.</p>
 							</div>
 							{/* <div className="Box col-md-3"> */}
 							<div className="Box">
-								<img className="Icone" src={email} />
+								<img className="Icone" src={email}  alt='Ìcone de e-mail.'/>
 								<p>A Cooperativa recebe um e-mail.</p>
 							</div>
 							{/* <div className="Box col-md-3"> */}
 							<div className="Box">
-								<img className="Icone" src={contato} />
+								<img className="Icone" src={contato}  alt='Ìcone de contato.'/>
 								<p>A Cooperativa entra em contato com você.</p>
 							</div>
 						{/* </div> */}
