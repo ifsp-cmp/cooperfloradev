@@ -9,14 +9,14 @@ const projeto = () => {
         <div className='Projeto'>
             <div className="Descricao">
                 <h3>Projeto</h3>
-                <p id="texto">Este projeto consiste na criação deste site, visando a aprimoração da forma como os consumidores têm acesso a formação político-pedagógica necessária para poderem ingressarem nos grupos de consumo da cooperativa Cooperflora, passando a formação solicitada de somente presencial para presencial ou não presencial.</p>
-                <p id="texto">Os grupos de consumo têm crescido, porém nem todos os seus participantes sabem da importância da política da produção  agroecológica e baseado nesse motivo a cooperativa disponibiliza uma formação, até o momento presencial, para os participantes com o intuito de apresentar a agroecologia cenário dos assentamentos rurais antes de se iniciar de fato a participação em algum dos grupos de consumo.</p>
-                <p id="texto">A partir da criação do site, essa formação se torna mais flexível, para que desta forma os grupos possam ser ampliados. Além de facilitar o acesso das pessoas à formação também permite que os membros da cooperativa possam ter um banco de dados das pessoas que querem fazer parte dos grupos de consumo dos produtos agroecológicos e que as pessoas tenham acesso a mais informações sobre a cooperativa.</p>
+                <p>Este projeto consiste na criação deste site, visando a aprimoração da forma como os consumidores têm acesso a formação político-pedagógica necessária para poderem ingressarem nos grupos de consumo da cooperativa Cooperflora, passando a formação solicitada de somente presencial para presencial ou não presencial.</p>
+                <p>Os grupos de consumo têm crescido, porém nem todos os seus participantes sabem da importância da política da produção  agroecológica e baseado nesse motivo a cooperativa disponibiliza uma formação, até o momento presencial, para os participantes com o intuito de apresentar a agroecologia cenário dos assentamentos rurais antes de se iniciar de fato a participação em algum dos grupos de consumo.</p>
+                <p>A partir da criação do site, essa formação se torna mais flexível, para que desta forma os grupos possam ser ampliados. Além de facilitar o acesso das pessoas à formação também permite que os membros da cooperativa possam ter um banco de dados das pessoas que querem fazer parte dos grupos de consumo dos produtos agroecológicos e que as pessoas tenham acesso a mais informações sobre a cooperativa.</p>
             </div>
             <hr />
 
             <h3>Equipe</h3>
-            <p id="texto"> A equipe que desenvolveu o projeto é formada por:</p>
+            <p> A equipe que desenvolveu o projeto é formada por:</p>
             <div className="Equipe">
                 <div>
                     <img className='foto' src={fotoAndre} alt='Foto do André Bordignon'/>

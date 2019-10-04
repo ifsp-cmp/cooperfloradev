@@ -11,7 +11,7 @@ const footer = () => {
     return (
         <footer className="Footer">
             <div className="Bloco">
-                <spam>Realização</spam>
+                Realização
                 <div class="Itens">
                     <a href="https://cmp.ifsp.edu.br/index.php/extensao-categoria-menu-2/2-uncategorised/221-neaes">
                     <img className="NeaesLogo" src={logoNeaes} alt='Logo do NEAES'/>
@@ -22,11 +22,11 @@ const footer = () => {
                 </div>
             </div>
             <div className="Bloco">
-                <spam>Cooperativa Cooperflora</spam><br />
+                Cooperativa Cooperflora<br />
                  <img className="License" src={license} alt='Tipo de Licenciamento.'/>
             </div>
             <div className="Bloco">
-                <spam>Contato</spam><br />
+                Contato<br />
                 <a href='https://www.facebook.com/Cooperflora1/' target="_blank" rel="noopener noreferrer">
                     <img className="FacebookLogo" src={logoFacebook} alt='Logo do Facebook'/>
                 </a>
