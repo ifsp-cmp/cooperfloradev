@@ -14,7 +14,7 @@ class Training extends Component{
 	render(){
 		return(
 			<div className="Training">
-                <p>Vídeo da Formação</p>
+                {/* <p>Vídeo da Formação</p> */}
                 <Video currentTime={this.props.userData.videoTime} />
 			</div>
 		);

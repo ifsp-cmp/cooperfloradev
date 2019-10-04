@@ -11,32 +11,35 @@
 .Footer .Bloco{
     width: 100%;
     /* height: 150px; */
-    font-size: 1.1em;
+    font-size: 1.0em;
     text-align: center;
     /* border: 2px solid white; */
     /* border-right: 1px solid rgb(0,0,0, 0.7); */
 
 }
 
-
 .IfspLogo{
-    width: 70px;
-    padding: 5px;
+    width: 50px;
+    padding: 2px 5px;
 }
 
 .NeaesLogo{
-    width: 70px;
-    padding: 5px;
+    width: 50px;
+    padding: 2px 5px;
+}
+
+.License{
+    padding: 2px 5px;
 }
 
 .FacebookLogo{
-    width: 50px;
-    padding: 5px;
+    width: 40px;
+    padding: 2px 5px;
 }
 
 .EmailLogo{
-    width: 50px;
-    padding: 5px;
+    width: 40px;
+    padding: 2px 5px;
 }
 
 @media (min-width: 600px){
