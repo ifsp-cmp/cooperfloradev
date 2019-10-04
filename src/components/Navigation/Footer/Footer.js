@@ -11,22 +11,22 @@ const footer = () => {
     return (
         <footer className="Footer">
             <div className="Bloco">
-                <p><strong>Realização</strong></p>
+                <spam>Realização</spam>
                 <div class="Itens">
                     <a href="https://cmp.ifsp.edu.br/index.php/extensao-categoria-menu-2/2-uncategorised/221-neaes">
                     <img className="NeaesLogo" src={logoNeaes} alt='Logo do NEAES'/>
-                    </a>
+                    </a> 
                     <a href='http://www.cmp.ifsp.edu.br' >
                         <img className="IfspLogo" src={logoIfspCampinas} alt='Logo do IFSP Campinas'/>
                     </a>
                 </div>
             </div>
             <div className="Bloco">
-                <p><strong>Cooperativa Cooperflora</strong></p>
-                 <img src={license} alt='Tipo de Licenciamento.'/>
+                <spam>Cooperativa Cooperflora</spam><br />
+                 <img className="License" src={license} alt='Tipo de Licenciamento.'/>
             </div>
             <div className="Bloco">
-                <p><strong>Contato</strong></p>
+                <spam>Contato</spam><br />
                 <a href='https://www.facebook.com/Cooperflora1/' target="_blank" rel="noopener noreferrer">
                     <img className="FacebookLogo" src={logoFacebook} alt='Logo do Facebook'/>
                 </a>
