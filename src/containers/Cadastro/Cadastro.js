@@ -15,7 +15,7 @@ class Cadastro extends Component{
 				elementType: 'input',
 				elementConfig: {
 					type: 'text',
-					placeholder: 'Digite o nome'
+					placeholder: 'Digite seu nome'
 				},
 				value: '',
 				validation: {
@@ -28,7 +28,7 @@ class Cadastro extends Component{
 				elementType: 'input',
 				elementConfig: {
 					type: 'text',
-					placeholder: 'Digite o fone'
+					placeholder: 'Digite seu telefone'
 				},
 				value: '',
 				validation: {
@@ -41,7 +41,7 @@ class Cadastro extends Component{
 				elementType: 'input',
 				elementConfig: {
 					type: 'email',
-					placeholder: 'Digite o e-mail'
+					placeholder: 'Digite seu e-mail'
 				},
 				value: '',
 				validation: {
@@ -148,8 +148,8 @@ class Cadastro extends Component{
 
 		return(
 			<div className="Cadastro">
-				<p>Cadastro</p>
-				<p>Todos os campos são obrigatórios</p>
+				<h3>Cadastro</h3>
+				<p className="alert-warning">Todos os campos são obrigatórios</p>
 				{redirect}
 				{form}
 			</div>

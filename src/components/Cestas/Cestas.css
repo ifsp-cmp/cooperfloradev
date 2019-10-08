@@ -1,60 +1,63 @@
-.Cooperflora{
+.Cestas{
     width: 100%;
-    margin-top: 80px;
+    padding: 10px;
 }
 
-.Cooperflora .Titulo{
+.Cestas .TextoCestas{
     text-align: center;
 }
 
-.Cooperflora .Apresentacao{
-    text-align: justify;
-    margin: 15px;
-}
-
-.Cartoes{
+.Cestas .Cartoes{
     padding: 10px 50px;
     /* display: flex;
     justify-content: space-between; */
     text-align: center;
 }
 
-/* .Cartoes .BordaCartao{
+.Cestas .Cartoes .Cartao{
     border: 1px solid rgba(0,0,0,0.125);
     box-shadow: #000 2px 2px 1px;
     padding: 5px;
     box-sizing: border-box;
-} */
-
-.Cartoes .Cartao{
-    border: 1px solid rgba(0,0,0,0.125);
-    box-shadow: #000 2px 2px 1px;
-    background-color: lightgrey;
     margin: 10px;
-    
+    background-color: bisque;
+    text-align: left;
 }
 
-.Cartoes .TextoCartao{
+.Cestas .Alimento{
+    width: 50px;
+}
+
+.Cestas .Meses{
+    font-weight: bold; 
+    text-align: center;
+}
+
+
+
+/* 
+.Cestas .Composicao{
+    width: 100%;
+}
+
+.Cestas .Composicao .Trimestre{
+    border: 1px solid black;
     text-align: center;
     margin-top: 20px;
     margin-bottom: 20px;
-
-    /* padding: 20px; */
 }
 
+
 @media (min-width: 600px){
-    .Cooperflora {
+    .Cestas {
         margin-bottom: 200px;
     }
 
-    .Cartoes{
+    .Cestas .Composicao .Trimestre{
         padding: 10px 50px;
         display: flex;
         justify-content: space-between;
         text-align: center;
     }
 
-    .Cartao{
-        width: 30%;
-    }
-}
+} */

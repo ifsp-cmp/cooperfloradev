@@ -36,7 +36,7 @@ class ForgotPassword extends Component  {
 		}
         return (
            <div className='ForgotPassword'>
-               <h1>Esqueci minha senha</h1>
+               <h3>Esqueci minha senha</h3>
                <p>Digite seu e-mail cadastrado abaixo para receber informações sobre como reiniciar sua senha.</p>
                {html}
            </div>

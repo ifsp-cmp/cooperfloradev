@@ -1,5 +1,6 @@
 import React from 'react';
 import './Footer.css'
+import { NavLink } from 'react-router-dom';
 
 import logoFacebook from '../../../assets/images/logofacebook.png';
 import logoEmail from '../../../assets/images/logoemail.png';
@@ -12,7 +13,7 @@ const footer = () => {
         <footer className="Footer">
             <div className="Bloco">
                 Realização
-                <div class="Itens">
+                <div className="Itens">
                     <a href="https://cmp.ifsp.edu.br/index.php/extensao-categoria-menu-2/2-uncategorised/221-neaes">
                     <img className="NeaesLogo" src={logoNeaes} alt='Logo do NEAES'/>
                     </a> 
@@ -22,8 +23,8 @@ const footer = () => {
                 </div>
             </div>
             <div className="Bloco">
-                Cooperativa Cooperflora<br />
-                 <img className="License" src={license} alt='Tipo de Licenciamento.'/>
+                <NavLink className="Projeto" to='/projeto' exact>Equipe de Desenvolvimento</NavLink><br />
+                <img className="License" src={license} alt='Tipo de Licenciamento.'/>
             </div>
             <div className="Bloco">
                 Contato<br />

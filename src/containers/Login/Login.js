@@ -120,6 +120,7 @@ class Login extends Component{
 		// console.log('[Component Login]');
 		return(
 			<div className="Login">
+				<h3>Login</h3>
 				{redirect}
 				{form}
 				{error}
