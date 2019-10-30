@@ -41,7 +41,7 @@ const cooperflora = () => {
                         <p>Transformação Social</p>
                         <p>Respeito ao meio ambiente</p>
                         <p>Cooperação</p>
-                        <p>Sopdariedade</p>
+                        <p>Solidariedade</p>
                     </div>
                 </div>
             </div>
